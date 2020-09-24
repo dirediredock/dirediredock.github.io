@@ -1,3 +1,7 @@
+---
+layout: post
+title: The seabed holes of Outer Harbour
+---
 
 ![](/images/A1.png)
 ![](/images/A2.png)
