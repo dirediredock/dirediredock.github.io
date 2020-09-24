@@ -18,8 +18,8 @@ html {
 }
 
 body {
-	background: $black;
-  font: 18px/1.4 $helvetica;
+  background: $black;
+  font: 18px/1.4 $helveticaNeue;
   color: $white;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helvetica;
+  font-family: $helveticaNeue;
   color: $gray;
   font-weight: bold;
 
@@ -71,7 +71,7 @@ p {
 a {
   color: $blue;
   text-decoration: none;
-	cursor: pointer;
+  cursor: pointer;
   &:hover, &:active {
     color: $blue;
   }
@@ -194,7 +194,7 @@ img {
   margin: 0;
   color: $white;
   cursor: pointer;
-  font-family: $helvetica;
+  font-family: $helveticaNeue;
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
@@ -213,7 +213,7 @@ img {
 nav {
   float: right;
   margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helvetica;
+  font-family: $helveticaNeue;
   font-size: 18px;
 
   @include mobile {
