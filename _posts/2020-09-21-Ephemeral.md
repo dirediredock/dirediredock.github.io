@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: "The lost kelp of Coal Harbour's epehemeral island"
 ---
 
 <ul>
