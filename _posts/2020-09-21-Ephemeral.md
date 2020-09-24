@@ -1,16 +1,10 @@
 ---
 layout: post
-title: "The lost kelp of Coal Harbour's epehemeral island"
+title: "Lost kelp of Coal Harbour's epehemeral island"
 ---
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
-
+![](/images/Ephemeral1.png)
+![](/images/Ephemeral2.png)
 
 
 
