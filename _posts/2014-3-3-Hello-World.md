@@ -1,3 +1,7 @@
+---
+layout: post
+title: Welcome!
+---
 
 ![](/images/X1.png)
 ![](/images/X2.png)
