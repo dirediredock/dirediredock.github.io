@@ -23,7 +23,7 @@ The following two steps are deceitfully simple: the goal is to create a regular 
 
 The reciprocal of the `step` number is used as the determinant of length, but I haven't figured an elegant way to connect the final vector lengths of `Xi` and `Yi` with code. The specific numbers shown here (0.5479999999:1 ratio) come from manual trial and error. It has to do with MATLAB using index start at `1` instead of `0`, but it works!
 
-```{matlab}
+```{}
 step=24999;
 Xi=(Xmin:1/step:Xmax)';
 Yi=(Ymin:0.5479999999/step:Ymax)';
@@ -35,7 +35,7 @@ newOne=ones(string,1);
 
 This for-loop populates the `newOne` vector and turns it into a periodic `newX` vector for every X position in the new lattice. Simultaneously, each iteration adds a new `newY` value, looping across Y positions until a new X position is required. This creates an XY grid bound within the `nanmax` and `nanmin` limits of `X` and `Y`.
 
-```text
+```{}
 for i=1:string
     if i==1
         stanzaX=Xi(i,1);
@@ -56,7 +56,7 @@ end
 
 Creating the point cloud `ptCloud`, a placeholder object with all the original `X` and `Y` information and a zero dummy vector to be populated by the Z dimension, or the vector `newZ`.
 
-```matlab
+```{}
 xyzPoints=cat(2,X,Y,zeros(length(Z),1));
 ptCloud=pointCloud(xyzPoints);
 newZ=zeros(length(newX),1);
@@ -66,7 +66,7 @@ newZ=zeros(length(newX),1);
 
 In this step everything comes together. The vector `newZ` gets populated by elevation data from the original `X` and `Y` data now in `ptCloud` using a k-nearest neighbor algorithm, here using the two closest points from the cloud and averaging them to populate the respective `newZ` point. This is repeated millions of times, so a modulo of every 1000000th iteration prints the `i` number to check progress. This step takes about 2 hours to complete, depending on how large the datasets are.
 
-```
+```{}
 for i=1:1:length(newX)
     b=mod(i,1000000);
     	if b==0
@@ -85,7 +85,7 @@ end
 
 Exporting into vectors, and into a final 3D vector, here called `XYZ_Basin`. This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
 
-```
+```{}
 finalX=newX;
 finalY=newY;
 finalZ=newZ;
