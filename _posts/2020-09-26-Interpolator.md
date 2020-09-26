@@ -4,6 +4,8 @@ layout: post
 title: "#005 - From raw data to surface lattice"
 ---
 
+This is MATLAB code
+
 ```{matlab}
 
 X=Basin(:,1);Xmin=nanmin(X);Xmax=nanmax(X);
