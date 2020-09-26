@@ -11,7 +11,7 @@ Formalizing several different datasets into a single lattice surface allows for 
 
 Load and compile your 3D raw data (fine if datasets spatially overlap), here called `Basin`, and isolate each spatial dimension into its `X`, `Y`, and `Z` vectors. Extract the maximum and minimum values of each vector using the `nanmax` and `nanmin` functions, these six values (two per vector) are the three-dimensional edges of the complete dataset.
 
-```
+```{}
 X=Basin(:,1);Xmin=nanmin(X);Xmax=nanmax(X);
 Y=Basin(:,2);Ymin=nanmin(Y);Ymax=nanmax(Y);
 Z=Basin(:,3);Zmin=nanmin(Z);Zmax=nanmax(Z);
