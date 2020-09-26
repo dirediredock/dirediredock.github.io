@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "#005 - From raw data to surface lattice"
