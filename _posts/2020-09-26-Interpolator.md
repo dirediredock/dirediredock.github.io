@@ -83,14 +83,13 @@ end
 
 #### Step 6
 
-Exporting into vectors, and into a final 3D vector, here called `XYZ_Basin`. This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
+Exporting into vectors, and into a final 3D vector, here called `XYZ_Basin`.
 
 ```{}
-finalX=newX;
-finalY=newY;
-finalZ=newZ;
-XYZ_Basin=cat(3,finalX,finalY,finalZ);
+XYZ_Basin=cat(3,newX,newY,newZ);
 ```
+
+ This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
 
 
 
