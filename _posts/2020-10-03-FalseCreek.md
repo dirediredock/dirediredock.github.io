@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#008 - Buried shores of False Creek"
+title: "#009 - Buried shores of False Creek"
 ---
 
 One of the oldest maps of downtown Vancouver is this sketch of False Creek Flats from 1859.
