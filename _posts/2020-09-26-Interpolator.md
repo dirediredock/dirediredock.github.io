@@ -5,7 +5,7 @@ title: "#005 - From raw data to surface lattice"
 
 This is MATLAB code that describes a method to regularize raw scattered surface data into a regular lattice. Light scans, such as sonar and LiDAR data, often are segmented into several sections, and each datapoint is irregularly scattered across the surface.
 
-Formalizing several different datasets into a single lattice surface allows for feature visualization and analysis without the compromise of irregularly scattered data that can bias results. This is done in six steps.
+Formalizing several different datasets into a single lattice surface allows for feature visualization and analysis without the compromise of irregularly scattered data that can bias results. The six steps shown here describe a novel original method.
 
 #### Step 1
 
@@ -90,10 +90,11 @@ Exporting into vectors, and into a final 3D vector, here called `XYZ_Basin`.
 ```{}
 XYZ_Basin=cat(3,newX,newY,newZ);
 ```
-
- This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
+![](/images/Method1.png)
  
- ![](/images/Method1.png)
+This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
+ 
+
 
 
 
