@@ -61,6 +61,7 @@ xyzPoints=cat(2,X,Y,zeros(length(Z),1));
 ptCloud=pointCloud(xyzPoints);
 newZ=zeros(length(newX),1);
 ```
+![](/images/Method2.png)
 
 #### Step 5
 
@@ -80,6 +81,7 @@ for i=1:1:length(newX)
     newZ(i,1)=pointZ;
 end
 ```
+![](/images/Method3.png)
 
 #### Step 6
 
@@ -90,6 +92,8 @@ XYZ_Basin=cat(3,newX,newY,newZ);
 ```
 
  This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
+ 
+ ![](/images/Method1.png)
 
 
 
