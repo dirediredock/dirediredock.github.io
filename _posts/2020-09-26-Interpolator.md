@@ -91,8 +91,16 @@ Exporting into vectors, and into a final 3D vector, here called `XYZ_Basin`.
 XYZ_Basin=cat(3,newX,newY,newZ);
 ```
 ![](/images/Method1.png)
+&nbsp;
  
-This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software.
+This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software. Here a hacky render is created by stithcing together several stills of the model render while slowly changing the theta angle, while the azimuth remains the same.
+&nbsp;
+
+![](/images/Render3D.gif)
+
+&nbsp;
+&nbsp;
+&nbsp;
  
 
 
