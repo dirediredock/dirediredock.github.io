@@ -94,9 +94,6 @@ XYZ_Basin=cat(3,newX,newY,newZ);
 &nbsp;
  
 This can be exported as a .csv file (or .xyz file) for visualizations in graphical engine software. Here a hacky render is created by stithcing together several stills of the model render while slowly changing the theta angle, while the azimuth remains the same.
-&nbsp;
-
-![](/images/Render3D.gif)
 
 &nbsp;
 &nbsp;
