@@ -1,17 +1,9 @@
 ---
 layout: post
-title: "#015 - Shoreline length change between 1890 and 2020"
+title: "#015 - Shore length change from 1890 to 2020"
 ---
 
-Comparing the shoreline of Vancouver Harbour in 2020 and the shoreline from an old Admiralty map of the region from 1893. 
-
-&nbsp;
-
-![](/images/Map1890.png)
-
-&nbsp;
-
-After vectorization, four shorelines emerge, northern 1890 and 2020 and southern 1890 and 2020. Each will be calculated independently.
+Comparing the shoreline of Vancouver Harbour in 2020 and the shoreline from an old Admiralty map of the region from 1893. After vectorization, four shorelines emerge, northern 1890 (yellow) and 2020 (blue) and southern 1890 (purple) and 2020 (red). Each will be calculated independently.
 
 &nbsp;
 
