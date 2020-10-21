@@ -7,7 +7,7 @@ Comparing the shoreline of Vancouver Harbour in 2020 and the shoreline from an o
 
 &nbsp;
 
-![](/images/1890.png)
+![](/images/Map1890.png)
 
 &nbsp;
 
@@ -19,12 +19,19 @@ After vectorization, four shorelines emerge, northern 1890 and 2020 and southern
 
 &nbsp;
 
-The length of the northern shoreline in 1890 is about 58 kilometers, while in 2020 it is about 66 kilometers. The length of the southern shoreline in 1890 is about 109 kilometers, while in 2020 it is about 111 kilometers.
+The length of the northern shoreline in 1890 is about 58 kilometers, while in 2020 it is about 66 kilometers.
 
 &nbsp;
 
 ![](/images/Length1.png)
 ![](/images/Length3.png)
+
+&nbsp;
+
+The length of the southern shoreline in 1890 is about 109 kilometers, while in 2020 it is about 111 kilometers.
+
+&nbsp;
+
 ![](/images/Length2.png)
 ![](/images/Length4.png)
 
