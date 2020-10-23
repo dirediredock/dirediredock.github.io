@@ -7,6 +7,10 @@ One of the oldest maps of downtown Vancouver is this sketch of from 1859, showin
 
 &nbsp;
 
+![](/images/DowntownScan.png)
+
+&nbsp;
+
 ![](/images/FalseCreek1859.png)
 
 &nbsp;
@@ -26,3 +30,6 @@ Map of place names (date unknown?)
 ![](/images/PlaceNames.png)
 
 &nbsp;
+&nbsp;
+&nbsp;
+
