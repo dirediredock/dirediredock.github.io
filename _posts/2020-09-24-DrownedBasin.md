@@ -3,6 +3,8 @@ layout: post
 title:  "#003 - The drowned basin visualized"
 ---
 
+![](/images/ColorbarDrowned.png)
+
 Outer Harbour
 
 ![](/images/X10.png)
