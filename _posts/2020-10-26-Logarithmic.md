@@ -13,7 +13,7 @@ In this case we are interested in the hidden patterns around the tidal margin of
 
 &nbsp;
 
-![](/images/LogMap.png)
+![](/images/LogMapFull.png)
 
 &nbsp;
 
@@ -49,6 +49,20 @@ A=geoXY_Oldest;scatter(A(:,1),A(:,2),0.01,'w');
 xlim([-123.175,-122.975]);ylim([49.2625,49.3375]);
 colormap(flipud(inferno));axis off;drawnow;
 ```
+
+There are three regions that just before 1880 were shallow enough to be drowned at high tide, marked `A`, `B`, and `C` in the figure below. The logarithmic colormap reveals the shallowest points between water bodies, with bright yellow closest to sea level.
+
+At `A` a lost connection made Stanley Park into an island. A causeway would drain the high tide of Lost Lagoon into Second Beach through the meander at `A`, which is now infilled. Sites `B` and `C` made Downtown Vancouver into an island, perhaps two islands, for a total of three counting Stanley Park. At `B` the high tide of False Creek Flats (fully infilled in the 1920s) would connect with Inner Harbour. Site `C` is a lost creek relevead with the logarithmic colormap, meaning it has survived until 2020. The elevation data of sites `A` and `C` support couseways existed that are now infilled.
+
+In contrast, site `B` is unclear. There is a narrowing of the pre-contact shoreline, alongside shallower land, but there is no obvious trail or causeway revealed. This is likely because any connection is now buried under too many layers of infill, as that is also the site of the oldest urban settlements in Vancouver, with railway tracks still in use today.
+
+&nbsp;
+
+![](/images/LogMapSites.png)
+
+&nbsp;
+
+Many thanks for the council of Michelle George and Mike George for sharing Tsleil-Waututh knowledge about the pre-contact state of Burrard Inlet, including the location of three sites in the figure above.
 
 &nbsp;
 &nbsp;
