@@ -62,7 +62,7 @@ In contrast, site `B` is unclear. There is a narrowing of the pre-contact shorel
 
 &nbsp;
 
-Many thanks for the council of Michelle George and Mike George for sharing Tsleil-Waututh knowledge about the pre-contact state of Burrard Inlet, including the location of three sites in the figure above.
+Many thanks for the council of Michelle George and Mike George for sharing Tsleil-Waututh knowledge about the pre-contact state of Burrard Inlet.
 
 &nbsp;
 &nbsp;
