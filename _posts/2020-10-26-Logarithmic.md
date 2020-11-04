@@ -55,9 +55,9 @@ colormap(flipud(inferno));axis off;drawnow;
 
 &nbsp;
 
-There are three regions that just before 1880 were shallow enough to be drowned at high tide, marked `A`, `B`, and `C` in the figure above. The logarithmic colormap reveals the shallowest points between water bodies, with bright yellow closest to sea level. The figures below are high-contrast renders with a syntheyic high-tide that stops as soon as a connection between waters bodies occurs at either `A`, `B`, or `C`.
+There are three regions that just before 1880 were shallow enough to be drowned at high tide, marked `A`, `B`, and `C` in the figure above. The logarithmic colormap reveals the shallowest points between water bodies, with bright yellow closest to sea level. The figures below are high-contrast renders with a synthetic high-tide that stops as soon as a connection between water bodies occurs at either `A`, `B`, or `C`.
 
-Site `A` is where Lost Lagoon connects to Second Beach, here shown to occur when water rises to 4.3 meters above sea level (lowest tide, or 0 meters). Site `B` is today Hastings, which in 1880 was a much narrower isthmus. This region today would connect False Creek Flats with Inner Harbour if the water rose 8.11 meters. Interestingly, at 8.01 the connection is broken, yet the area is quite large, meaning that the flooded region is today remarkably flat with an elevation difference of 10 centimeters. Finally, site `C` is a lost creek that once extended northward off False Creek Flats, where Raymur Avenue is today. This narrow meander connects at 9.1 meters, but remains non-flat and creek-shaped even today, as shown in the logarithmic colormap above.
+Site `A` is where Lost Lagoon connects to Second Beach, shown to occur when water rises to 4.3 meters above sea level (lowest tide, or 0 meters). Site `B` is today Hastings, which in 1880 was a much narrower isthmus. This region today would connect False Creek Flats with Inner Harbour if the water rose 8.11 meters. Interestingly, at 8.01 the connection is broken, yet the area is quite large, meaning that the flooded region is today remarkably flat with an elevation difference of 10 centimeters. Finally, site `C` is a lost creek that once extended northward off False Creek Flats, where Raymur Avenue is today. This narrow meander connects at 9.1 meters, but remains non-flat and creek-shaped even today, as shown in the logarithmic colormap above.
 
 &nbsp;
 
@@ -72,3 +72,4 @@ Many thanks for the council of Michelle George and Mike George for sharing Tslei
 &nbsp;
 &nbsp;
 &nbsp;
+
