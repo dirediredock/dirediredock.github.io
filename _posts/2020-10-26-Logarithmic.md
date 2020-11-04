@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#016 - Logarithmic waterfront"
+title: "#016 - The logarithmic waterfront"
 ---
 
 Highly skewed distributions are those that have values clustered at one end of their range. Direct visualization using a colormap doesn’t work, because only a fraction of the total color spectrum will be used by the data. Two things can fix this, either the colormap is transformed to match the distribution, or the distribution is transformed so that clustering is reduced.
