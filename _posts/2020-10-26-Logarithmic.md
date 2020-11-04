@@ -55,11 +55,17 @@ colormap(flipud(inferno));axis off;drawnow;
 
 &nbsp;
 
-There are three regions that just before 1880 were shallow enough to be drowned at high tide, marked `A`, `B`, and `C` in the figure above. The logarithmic colormap reveals the shallowest points between water bodies, with bright yellow closest to sea level.
+There are three regions that just before 1880 were shallow enough to be drowned at high tide, marked `A`, `B`, and `C` in the figure above. The logarithmic colormap reveals the shallowest points between water bodies, with bright yellow closest to sea level. The figures below are high-contrast renders with a syntheyic high-tide that stops as soon as a connection between waters bodies occurs at either `A`, `B`, or `C`.
 
-At `A` a lost connection made Stanley Park into an island. A causeway would drain the high tide of Lost Lagoon into Second Beach through the meander at `A`, which is now infilled. Sites `B` and `C` made Downtown Vancouver into an island, perhaps two islands, for a total of three counting Stanley Park. At `B` the high tide of False Creek Flats (fully infilled in the 1920s) would connect with Inner Harbour. Site `C` is a lost creek relevead with the logarithmic colormap, meaning it has survived until 2020. The elevation data of sites `A` and `C` support couseways existed that are now infilled.
+Site `A` is where Lost Lagoon connects to Second Beach, here shown to occur when water rises to 4.3 meters above sea level (lowest tide, or 0 meters). Site `B` is today Hastings, which in 1880 was a much narrower isthmus. This region today would connect False Creek Flats with Inner Harbour if the water rose 8.11 meters. Interestingly, at 8.01 the connection is broken, yet the area is quite large, meaning that the flooded region is today remarkably flat with an elevation difference of 10 centimeters. Finally, site `C` is a lost creek that once extended northward off False Creek Flats, where Raymur Avenue is today. This narrow meander connects at 9.1 meters, but remains non-flat and creek-shaped even today, as shown in the logarithmic colormap above.
 
-In contrast, site `B` is unclear. There is a narrowing of the pre-contact shoreline, alongside shallower land, but there is no obvious trail or causeway revealed. This is likely because any connection is now buried under too many layers of infill, as that is also the site of the oldest urban settlements in Vancouver, with railway tracks still in use today.
+&nbsp;
+
+![](/images/SynthA.png)
+![](/images/SynthB.png)
+![](/images/SynthC.png)
+
+&nbsp;
 
 Many thanks for the council of Michelle George and Mike George for sharing Tsleil-Waututh knowledge about the pre-contact state of Burrard Inlet.
 
