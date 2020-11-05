@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#018 - Cell resolution in Ecospace"
+title: "#018 - Ecospace cell resolution"
 ---
 
 &nbsp;
