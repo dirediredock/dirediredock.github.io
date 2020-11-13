@@ -35,9 +35,9 @@ Alt=cat(1,Extract,Alt);
 Alt(:,1)=rescale(Alt(:,1))*2;
 Alt(:,2)=rescale(Alt(:,2));
 ```
-Next, the function `xyz2grid` converts the XYZ vector into a non-georectified array, with the elevation dimension Z distributed to all cells of the array. The function `imresize` is key, it converts the `BurrardInlet` raw array into a new custom aspect ratio. In this case, tweaking the values can yield different cell sizes, equivalent to resolution in kilometers.
+Next, the function `xyz2grid` converts the XYZ vector into a non-georectified array, with the values of the elevation dimension Z distributed to each cells of the array, according to their X and Y coordinates. The function `imresize` is key, it converts our `BurrardInlet` array into a new custom aspect ratio. In this case, tweaking the aspect ratio values can yield different cell sizes, equivalent to resolution in kilometers (e.g. [2000,3000] for 10 meters, [40,60] for 500 meters).
 
-An important note for Ecospace export, the synthetic tide Z limit is increased by 1, or `tide+1` to have a buffer for at-boundary data, which is later converted to NaNs and removed.
+An important note for Ecospace export, the synthetic tide Z limit is increased by 1, or `tide+1`, to have a buffer at-boundary data, which is later converted to NaNs and removed. Without this buffer the blocky edge of the new resolution maps will be off.
 
 ```{}
 BurrardInlet=xyz2grid(Alt(:,1),Alt(:,2),Alt(:,3));
@@ -65,7 +65,7 @@ For cells at 1000m (1 km) resolution:
 A=imresize(BurrardInlet,[20,30]);
 ```
 
-Finally, for Ecospace export, anything above `tide`, in this case 3 meters, is converted to NaN and then to 0, and anything above or equal to -1 meters is converted to 1 meter (to homogenize the intertidal zone as the highest elevation, else the at-shoreline pixels get all whacky due to resolution change). Important to note that Ecospace expects “headers”, or an index vector at the first column and first row. This header must be present, else actual data will be used as a header instead. So we add synthetic headers, and then convert to CSV as `BurrardInlet.csv`. The last bit of code visualized the arrays, examples of which are shown below.
+To export into Ecospace-ready format, anything above `tide`, in this case 3 meters, is converted to NaN and then to 0 (Ecospace understands 0 elevation as land), and anything above or equal to -1 meters is converted to 1 meter (depths in Ecospace are positive, and this homogenizes the intertidal zone as the highest elevation). Important to note that Ecospace also expects “headers”, or an index vector at the first column and first row. This header must be present, else actual data will be used as a header instead, so we add synthetic headers. Finally, we convert to CSV as `BurrardInlet.csv`, and the last bit of code after this visualizes the arrays, figures shown below.
 
 ```{}
 A(A>=tide)=NaN;A(A>=-1)=1;A=abs(A);A(isnan(A))=0;
