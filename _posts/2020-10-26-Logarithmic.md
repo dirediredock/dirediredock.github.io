@@ -67,6 +67,11 @@ Site `A` is where Lost Lagoon connects to Second Beach, which occurs when water 
 
 &nbsp;
 
+![](/images/LikelihoodA.png)
+![](/images/LikelihoodB.png)
+
+&nbsp;
+
 Many thanks for the council of Michelle George and Mike George for sharing Tsleil-Waututh knowledge about the pre-contact state of Burrard Inlet.
 
 &nbsp;
