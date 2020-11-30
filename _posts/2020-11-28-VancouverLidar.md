@@ -6,7 +6,7 @@ title: "#022 - Vancouver LIDAR"
 LiDAR (Light Detection and Ranging) data collected in 2018 of the City of Vancouver and UBC Endowment Lands with an Area of Interest (AOI) covering a total of 134 square kilometers. There are 181 files, ranging from 2.2GB to 10.5KB, with mean weight at 0.99GB, median 1.21GB, and standard deviation of 518.7MB. The total dataset is 179GB.
 
 ```{}
-% 	Using `Digital-Forestry-Toolbox` for Lidar LAS files:
+% Using `Digital-Forestry-Toolbox` for Lidar LAS files:
 
 % 	00	Never Classified
 % 	01	Unassigned
