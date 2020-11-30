@@ -58,6 +58,9 @@ end
 ![](/images/LidarD.png)
 ![](/images/LidarE.png)
 ![](/images/LidarF.png)
+![](/images/DowntownLidarA.png)
+![](/images/DowntownLidarB.png)
+![](/images/DowntownLidarC.png)
 
 &nbsp;
 &nbsp;
