@@ -9,10 +9,10 @@ title: "#023 - Elevation Model 2.0"
 
 &nbsp;
 
-![](/images/ModelMosaicA.png)
-![](/images/ModelMosaicC.png)
-![](/images/ModelMosaicB.png)
-![](/images/ModelMosaicD.png)
+![](/images/DataMosaicA.png)
+![](/images/DataMosaicC.png)
+![](/images/DataMosaicB.png)
+![](/images/DataMosaicD.png)
 
 &nbsp;
 &nbsp;
