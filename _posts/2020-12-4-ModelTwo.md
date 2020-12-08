@@ -5,8 +5,6 @@ title: "#023 - Elevation Model 2.0"
 
 Described here is a revised pipeline that converts overlapped scattered raw point cloud datasets (sonar, bathymetry, LIDAR) into a lattice of regularly-spaced XYZ vectors. The figure below shows the raw dataset mosaic comes, which from four sources: BC slice from a Canada-wide Federal Elevation Model for dry land (Model A), CHS Burrard Inlet bathymetry (Model B), City of Vancouver LIDAR (Model C), and SalishSeaCast bathymetry (Model D). This mosaic is then sequentially mapped into a square lattice of 15000 rows and 15000 columns, a total of 225 million points.
 
-&nbsp;
-
 ![](/images/ModelDatasetsA.png)
 
 &nbsp;
@@ -63,6 +61,7 @@ plot3([Xmax;Xmax],[Ymax;Ymax],[-500,2000],'-w');
 plot3([Xmin;Xmin],[Ymin;Ymin],[-500,2000],'-w');
 plot3([Xmax;Xmax],[Ymin;Ymin],[-500,2000],'-w');
 ```
+&nbsp;
 
 #### Part 2
 
@@ -191,6 +190,8 @@ MarkTwoX=X;
 MarkTwoY=Y;
 MarkTwoZ=Z;
 ```
+
+&nbsp;
 
 #### Part 4
 
