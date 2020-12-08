@@ -67,7 +67,7 @@ plot3([Xmax;Xmax],[Ymin;Ymin],[-500,2000],'-w');
 
 #### Part 2
 
-Dataset curation involves editing datasets so overlap is minimized and efficiency is maximized. The most important edit is in the Z dimension, with the 1 meter elevation contour as cutoff for elevation overlap. All datasets with above-water data will not go below 1 meter (Federal Elevation and Vancouver LIDAR altimetries), and all below-water datasets will not go above 1 meter (CHS and SalishSeaCast bathymetries). This means that the low tide contour at 0 meter will be exclusively based on bathymetric data, while the high water mark will be a hybrid (later addicted by CHS ENC shapefiles). Regarding the X and Y spatial dimensions, there are specific edits to remove redundant chunks of data, with the higher-resolution dataset prevailing.
+Dataset curation involves editing datasets so overlap is minimized and efficiency is maximized. The most important edit is in the Z dimension, with the 1 meter elevation contour as cutoff for elevation overlap. All datasets with above-water data will not go below 1 meter (Federal Elevation and Vancouver LIDAR altimetries), and all below-water datasets will not go above 1 meter (CHS and SalishSeaCast bathymetries). This means that the low tide contour at 0 meter will be exclusively based on bathymetric data, while the high water mark will be a hybrid (later advised by CHS ENC shapefiles). Regarding the X and Y spatial dimensions, there are specific edits to remove redundant chunks of data, with the higher-resolution dataset prevailing.
 
 The most important edits here are for the Federal Elevation, which has the whole downtown region removed to make room for the high-resolution Vancouver LIDAR dataset. Similarly, SalishSeaCast is used for the Outer Harbour region and outskirts of the inlet, so any overlap with CHS bathymetry is removed, with CHS prevailing within the inlet region itself. Finally, because Vancouver LIDAR is an astonishingly large dataset (0.657 billion points) it is downsampled to 1/20th of its original size.
 
@@ -197,7 +197,7 @@ MarkTwoZ=Z;
 
 #### Part 4
 
-Finally, here we run the lattice interpolation pipeline. The K variable here is important, it determines the geometry of the sequential kernel. In detail, when K=1 the kernel just assigned the instance of Z to the nearest Z value, which can yield jitters in elevation if adjacent Z values happen to draw from the edge of overlapping mosaic datasets. This is smoothed out by K=2, which assigns the average of the two closets mosaic values. This can be further expanded, with K=3 using the centroid of a triangular plane, then K=4 the centroid of a tetrahedron, then K=5 the centroid of a pentachoron, and so on. Each higher value of K draws a more complex kernel that smoothes out the final model. For our purposes, K=2 preserves roughness that is relevant in this region, because it's a fjord with highly vertical rocky shores, yet K=2 still captures the mild gradients of dry land and shallower intertidal areas.
+Finally, here we run the lattice interpolation pipeline. The K variable here is important, it determines the geometry of the kernel that assings the Z value. In detail, when K=1 the kernel assigns the instance of the nearest Z value, which can yield jitters in elevation if adjacent Z values happen to draw from the edge of another dataset that overlaps in the mosaic. This is smoothed out by K=2, which assigns the average of the two closets mosaic values, under the geometry of a 1-simplex. This can be further expanded, with K=3 using the centroid of a triangular plane or a 2-simplex, then K=4 the centroid of a tetrahedron or a 3-simplex, then K=5 the centroid of a pentachoron or a 4-simplex, and so on. Starting at K=1 or a 0-simplex, higher values of K draws a more complex kernel that smoothes out the final model. For our purposes, K=2 preserves roughness that is relevant in this region, because it's a fjord with highly vertical rocky shores, yet K=2 still captures the mild gradients of dry land and shallower intertidal areas.
 
 ```{}
 % Creating the point cloud.
@@ -240,7 +240,7 @@ for i=1:1:totalVector
         i/totalVector*100 % Progress in percent
     end
     point=[newX(i,:),newY(i,:),0];
-    K=2;
+    K=2; % A kernel in the shape of a 1-simplex
     [indices,dists]=findNearestNeighbors(ptCloud,point,K);
     pickZ=Z(indices);
     pointZ=nanmean(pickZ);
