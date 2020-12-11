@@ -7,8 +7,8 @@ Shown in the figure below is the sonar-based bathymetry of Burrard Inlet from th
 
 &nbsp;
 
-![](/images/CallibrationCHSa.png)
-![](/images/CallibrationCHSb.png)
+![](/images/CallibrateCHSa.png)
+![](/images/CallibrateCHSb.png)
 
 &nbsp;
 
