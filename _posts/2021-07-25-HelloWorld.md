@@ -3,4 +3,6 @@ layout: post
 title: "Hello world!"
 ---
 
-New site, first post, who this?
+June 25th 2021
+
+First post of my new site!
