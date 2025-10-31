@@ -13,6 +13,16 @@ body {
     font-size: 20px;
 }
 
+a {
+    text-decoration: none;
+    color: #0066cc;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #87CEEB;
+}
+
 /* Container */
 .container {
     max-width: 800px;
@@ -43,13 +53,12 @@ nav {
 nav a {
     color: #0066cc;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.2s ease;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #0052a3;
-    text-decoration: underline;
+    color: #87CEEB;
 }
 
 /* Main Content */
@@ -137,12 +146,12 @@ li {
 .social-links a {
     color: #0066cc;
     text-decoration: none;
-    transition: color 0.2s ease;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #0052a3;
-    text-decoration: underline;
+    color: #87CEEB;
 }
 
 /* Footer */
