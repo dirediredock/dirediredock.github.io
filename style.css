@@ -192,3 +192,22 @@ footer {
         min-width: auto;
     }
 }
+
+.illustration-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.illustration-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.illustration-img:hover {
+    transform: scale(1.05);
+}
