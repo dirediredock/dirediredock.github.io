@@ -18,3 +18,5 @@ Thumbs.db
 *.tmp
 *.temp
 .cache/
+
+/scrap_docs
