@@ -5,8 +5,8 @@
     --hover: #555555;
     --rule: #E5E5E5;
     --paper: #FFFFFF;
-    --media: #F2F2F2;
-    --media-dark: #0E0D14;
+    --media: #E7E8ED;      /* Selectoscope screenshot edge */
+    --media-dark: #12111C; /* E3 screenshot edge */
     --max: 1184px;
     --gutter: max(16px, 4vw);
     --radius: 14px;
@@ -56,46 +56,6 @@ button:focus-visible,
 .mural:focus-visible {
     outline: 3px solid var(--ink);
     outline-offset: 3px;
-}
-
-/* ---------- Sticky bar ---------- */
-.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: env(safe-area-inset-top) var(--gutter) 0;
-    background: rgba(255, 255, 255, 0.97);
-    border-bottom: 1px solid var(--ink);
-    transform: translateY(-100%);
-    visibility: hidden;
-    transition: transform 0.2s ease, visibility 0.2s;
-}
-
-.sticky.is-visible {
-    transform: none;
-    visibility: visible;
-}
-
-.sticky a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 12px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.sticky span {
-    color: var(--muted);
 }
 
 /* ---------- Hero ---------- */
@@ -151,8 +111,8 @@ h1 {
     text-underline-offset: 3px;
 }
 
-.contact-link {
-    font-weight: 600;
+.prose .pill {
+    text-decoration: none;
 }
 
 .portrait {
@@ -168,7 +128,6 @@ h1 {
 .banner {
     display: flex;
     width: 100%;
-    border-top: 1px solid var(--ink);
 }
 
 .panel {
@@ -180,8 +139,10 @@ h1 {
     text-decoration: none;
 }
 
-.panel + .panel {
+/* Shadow falls between the images only; clip-path keeps it off the labels */
+.panel + .panel img {
     box-shadow: -10px 0 20px rgba(0, 0, 0, 0.22);
+    clip-path: inset(0 0 0 -40px);
 }
 
 .panel:nth-child(2) { z-index: 1; }
@@ -205,26 +166,23 @@ h1 {
     gap: 8px;
     min-height: 52px;
     padding: 12px 18px;
-    background: var(--ink);
-    color: #FFFFFF;
+    background: var(--paper);
+    color: var(--ink);
     font-size: 15px;
     font-weight: 600;
     letter-spacing: 1.2px;
     line-height: 1.2;
     text-transform: uppercase;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 .panel-label svg {
     flex: 0 0 auto;
 }
 
-.panel + .panel .panel-label {
-    box-shadow: inset 1px 0 0 #FFFFFF;
-}
-
 .panel:hover .panel-label {
-    background: #333333;
+    background: var(--ink);
+    color: #FFFFFF;
 }
 
 .panel:focus-visible {
@@ -285,7 +243,7 @@ h3 {
     overflow: hidden;
 }
 
-.card--feature {
+.card-row {
     display: flex;
     flex-wrap: wrap;
 }
@@ -294,15 +252,18 @@ h3 {
     margin-top: 24px;
 }
 
-.card--reverse {
+.card--reverse .card-row {
     flex-direction: row-reverse;
 }
 
-/* Hairline between image and text: vertical side by side, horizontal when stacked */
+/* Hairline between image and text: vertical side by side, horizontal when stacked.
+   If the text column is ever taller, the image stays centred instead of top-aligned. */
 .card-media {
     flex: 999 1 560px;
     min-width: 0;
     position: relative;
+    display: flex;
+    align-items: center;
     background: var(--media);
     box-shadow: 1px 0 0 var(--ink), 0 1px 0 var(--ink);
 }
@@ -340,6 +301,64 @@ h3 {
     font-size: 17px;
     line-height: 1.45;
     color: var(--muted);
+}
+
+/* ---------- Expandable text ---------- */
+.card[data-expand] {
+    cursor: pointer;
+}
+
+.card-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+}
+
+.card-more-inner {
+    min-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: visibility 0.3s;
+}
+
+.card-more-text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px 32px 32px;
+    border-top: 1px solid var(--ink);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.card-more-text p {
+    max-width: 40em;
+}
+
+.card--paper .card-more-text {
+    padding: 24px 28px 28px;
+}
+
+.card.is-open .card-more {
+    grid-template-rows: 1fr;
+}
+
+.card.is-open .card-more-inner {
+    visibility: visible;
+}
+
+.more-toggle {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.more-toggle svg {
+    transition: transform 0.2s ease;
+}
+
+.card.is-open .more-toggle svg {
+    transform: rotate(45deg);
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -384,22 +403,17 @@ h3 {
     color: #FFFFFF;
 }
 
-.pill--primary {
-    background: var(--ink);
-    color: #FFFFFF;
-}
-
-.pill--primary:hover {
-    background: #333333;
-    color: #FFFFFF;
-}
-
 /* ---------- Papers ---------- */
 .paper-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 24px;
     margin-top: 24px;
+}
+
+/* Equal heights while closed; an opened card grows alone, no empty neighbour */
+.paper-grid:has(.card.is-open) {
+    align-items: start;
 }
 
 .card--paper {
@@ -456,10 +470,23 @@ h3 {
     cursor: grabbing;
 }
 
+.mural.mural--fits {
+    cursor: auto;
+}
+
+/* When it scrolls, give the (overlay) scrollbar its own strip below the art */
+.mural:not(.mural--fits) {
+    padding-bottom: 14px;
+}
+
+.mural--fits + .wrap .hint {
+    visibility: hidden;
+}
+
+/* Whole mural, edge to edge, uncropped. Phones switch to a swipeable panorama below. */
 .mural img {
-    height: 560px;
-    width: auto;
-    max-width: none;
+    width: 100%;
+    height: auto;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -501,35 +528,37 @@ h3 {
     text-transform: uppercase;
 }
 
-.plans {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 6px;
-}
-
-.plans a {
-    flex: 0 0 auto;
-}
-
-.plans img {
-    height: 150px;
-    width: auto;
-    border-radius: 8px;
-}
-
+/* Justified rows (built in script.js): every image in a row shares one height,
+   each row fills the width exactly, nothing is cropped. */
 .gallery {
-    columns: 4 220px;
-    column-gap: 16px;
     margin-top: 40px;
 }
 
-.gallery a {
-    display: block;
-    margin: 0 0 16px;
-    break-inside: avoid;
+.plans,
+.gallery,
+.jrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
+.plans.is-justified,
+.gallery.is-justified {
+    flex-direction: column;
+}
+
+.jrow {
+    flex-wrap: nowrap;
+}
+
+.plans a,
+.gallery a {
+    display: block;
+    flex: 0 1 220px;
+    min-width: 0;
+}
+
+.plans img,
 .gallery img {
     width: 100%;
     height: auto;
@@ -540,10 +569,17 @@ h3 {
     cursor: zoom-in;
 }
 
-/* ---------- Leadership ---------- */
-.lead-grid {
+/* ---------- Collaboration and Service ---------- */
+.service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.service-stack {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -656,12 +692,6 @@ h3 {
 @media (max-width: 600px) {
     body { font-size: 17px; }
 
-    .sticky a {
-        padding: 0 6px;
-        font-size: 13px;
-        letter-spacing: 1px;
-    }
-
     .hero {
         padding: 32px 16px;
         gap: 16px;
@@ -685,8 +715,7 @@ h3 {
 
     .banner { flex-direction: column; }
     .panel img { height: 280px; }
-    .panel + .panel,
-    .panel + .panel .panel-label { box-shadow: none; }
+    .panel + .panel img { box-shadow: none; }
     .panel-label { padding: 12px 16px; }
 
     .section { padding: 64px 16px 0; }
@@ -709,6 +738,12 @@ h3 {
 
     .card-lead { font-size: 18px; }
     .card-text { font-size: 16px; }
+    .card-more-text,
+    .card--paper .card-more-text {
+        padding: 20px;
+        gap: 12px;
+        font-size: 16px;
+    }
     .pill { padding: 0 16px; }
 
     .paper-grid,
@@ -720,18 +755,22 @@ h3 {
     .card--paper h3 { font-size: 23px; }
     .authors { font-size: 15px; }
 
-    .mural img { height: 300px; }
+    .mural img {
+        width: auto;
+        max-width: none;
+        height: 300px;
+    }
     .mural-caption { font-size: 15px; }
     .label { margin: 32px 0 10px; font-size: 12px; }
-    .plans img { height: 110px; }
-    .gallery {
-        columns: 2;
-        column-gap: 12px;
-        margin-top: 28px;
-    }
-    .gallery a { margin-bottom: 12px; }
+    .gallery { margin-top: 28px; }
+    .plans,
+    .gallery,
+    .jrow { gap: 12px; }
+    .plans a,
+    .gallery a { flex-basis: 140px; }
 
-    .lead-grid { gap: 12px; }
+    .service-grid,
+    .service-stack { gap: 12px; }
     .card--plain { padding: 20px; }
     .card--plain h3 { font-size: 22px; }
     .card--plain p { font-size: 16px; }
@@ -777,7 +816,6 @@ h3 {
     .card-lead { font-size: 16px; }
     .card-text { font-size: 15px; }
 
-    .mural img { height: 260px; }
 }
 
 /* ---------- Reduced motion ---------- */
