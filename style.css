@@ -480,7 +480,9 @@ h3 {
     box-shadow: 0 1px 0 var(--line);
 }
 
-.tool-media img {
+.tool-media img,
+.tool-media video {
+    display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
