@@ -121,6 +121,24 @@
         });
     });
 
+    // Tool videos: loop like GIFs while on screen, pause when scrolled away.
+    // With reduced motion, nothing loads and the poster screenshot stays.
+    const toolVideos = document.querySelectorAll('.tool-video');
+    if (toolVideos.length && !reduceMotion.matches) {
+        const play = (video) => { video.play().catch(() => {}); };
+        if ('IntersectionObserver' in window) {
+            const watcher = new IntersectionObserver((entries) => {
+                entries.forEach(({ target, isIntersecting }) => {
+                    if (isIntersecting) play(target);
+                    else target.pause();
+                });
+            }, { threshold: 0.25 });
+            toolVideos.forEach((video) => watcher.observe(video));
+        } else {
+            toolVideos.forEach(play);
+        }
+    }
+
     // Lightbox: tap an illustration to see it whole; tap anywhere, Esc, or × to close.
     const lightbox = document.getElementById('lightbox');
     if (lightbox && typeof lightbox.showModal === 'function') {

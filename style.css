@@ -476,14 +476,17 @@ h3 {
 
 /* Screenshot on top, text below, with a hairline between */
 .tool-media {
+    padding: 24px;
     background: var(--media-bg, var(--panel));
     box-shadow: 0 1px 0 var(--line);
 }
 
-.tool-media img {
+.tool-media img,
+.tool-media video {
+    display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1912 / 1066;
     object-fit: contain;
 }
 
@@ -966,6 +969,8 @@ h3 {
 /* ---------- Narrower screens ---------- */
 @media (max-width: 600px) {
     body { font-size: 17px; }
+
+    .tool-media { padding: 12px; }
 
     .nav-inner { gap: 12px; }
     .nav-right { gap: 10px; }
