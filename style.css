@@ -1,15 +1,40 @@
 /* ---------- Tokens ---------- */
 :root {
-    --ink: #111111;
-    --muted: #444444;
-    --hover: #555555;
-    --rule: #E5E5E5;
-    --paper: #FFFFFF;
-    --media: #E7E8ED;      /* Selectoscope screenshot edge */
-    --media-dark: #12111C; /* E3 screenshot edge */
-    --max: 1184px;
+    --bg: #FFFFFF;
+    --panel: #FFFFFF;
+    --line: #111111;       /* card hairlines */
+    --line2: #111111;      /* pill borders */
+    --rule: #E5E5E5;       /* section rules, nav and footer */
+    --ink: #111214;
+    --soft: #33353a;       /* lead text */
+    --mute: #5f6168;       /* labels */
+    --acc: #FF0000;        /* red: dot, LIVE, eyebrow only */
+    --lift: rgba(17, 17, 17, 0.12);
+
+    --max: 1280px;
     --gutter: max(16px, 4vw);
     --radius: 14px;
+    --nav-h: 60px;
+
+    --sans: 'Roboto Condensed', 'Arial Narrow', sans-serif;
+    --mono: 'Fira Code', ui-monospace, Menlo, monospace;
+
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --bg: #0e0f12;
+    --panel: #15161a;
+    --line: #26282e;
+    --line2: #3a3c43;
+    --rule: #26282e;
+    --ink: #e9e8e4;
+    --soft: #c9c8c3;
+    --mute: #9a9ca3;
+    --acc: #FF0000;
+    --lift: rgba(0, 0, 0, 0.5);
+
+    color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -20,53 +45,181 @@
 }
 
 html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
 }
 
 body {
     margin: 0;
-    background: var(--paper);
+    background: var(--bg);
     color: var(--ink);
-    font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 19px;
+    font-family: var(--sans);
+    font-size: 18px;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, p, figure, dl, dd, ol, ul {
     margin: 0;
 }
 
 img {
     display: block;
     max-width: 100%;
+    height: auto;
 }
 
 a {
     color: var(--ink);
-    transition: color 0.15s ease;
 }
 
-a:hover {
-    color: var(--hover);
+button {
+    font: inherit;
+    color: inherit;
 }
 
 a:focus-visible,
 button:focus-visible,
-.mural:focus-visible {
-    outline: 3px solid var(--ink);
+[tabindex]:focus-visible {
+    outline: 2px solid var(--ink);
     outline-offset: 3px;
+}
+
+/* Mono labels: tags, buttons, metadata, readouts (one SemiBold weight throughout) */
+.eyebrow,
+.tag,
+.pill,
+.nav-name,
+.status,
+.theme-toggle,
+.tool-bar,
+.readout dt,
+.readout dd,
+.paper-year,
+.t-where,
+.t-sub,
+.label,
+.hint,
+.footer {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+/* ---------- Nav ---------- */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+}
+
+.nav-inner {
+    max-width: var(--max);
+    height: var(--nav-h);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-name {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-self: end;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--mute);
+    white-space: nowrap;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--acc);
+}
+
+.theme-toggle {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--mute);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.theme-toggle:hover {
+    color: var(--ink);
+}
+
+/* Switch: track plus knob; knob slides right when dark mode is on */
+.switch {
+    position: relative;
+    flex: none;
+    width: 36px;
+    height: 20px;
+    border: 1px solid var(--line2);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+
+.switch::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ink);
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle[aria-checked="true"] .switch {
+    background: var(--ink);
+}
+
+.theme-toggle[aria-checked="true"] .switch::after {
+    background: var(--bg);
+    transform: translateX(16px);
 }
 
 /* ---------- Hero ---------- */
 .hero {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 72px var(--gutter) 56px;
+    padding: 72px var(--gutter) 88px;
     display: flex;
-    flex-wrap: wrap-reverse;
-    align-items: center;
-    gap: 32px 56px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 48px 64px;
+    scroll-margin-top: var(--nav-h);
 }
 
 .hero-text {
@@ -77,123 +230,83 @@ button:focus-visible,
     gap: 22px;
 }
 
+.eyebrow {
+    color: var(--acc);
+    font-weight: 600;
+}
+
 h1 {
-    font-size: 104px;
-    line-height: 0.92;
-    letter-spacing: -2px;
+    font-size: clamp(60px, 10vw, 132px);
+    line-height: 0.88;
     font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .lede {
-    font-size: 28px;
-    line-height: 1.25;
-    max-width: 20em;
+    max-width: 22em;
+    font-size: clamp(22px, 2.7vw, 34px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--soft);
 }
 
-.prose {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.bio {
     max-width: 36em;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--muted);
-}
-
-.prose strong {
-    color: var(--ink);
-}
-
-.prose a,
-.funfact a {
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 3px;
-}
-
-.prose .pill {
-    text-decoration: none;
+    color: var(--soft);
 }
 
 .portrait {
-    flex: 0 0 auto;
-    width: 220px;
+    flex: 0 1 300px;
+    max-width: 300px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.portrait img {
+    width: 100%;
     height: auto;
     aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: 10px;
+    filter: grayscale(1);
+    transition: filter 0.4s ease;
 }
 
-/* ---------- Banner ---------- */
-.banner {
-    display: flex;
-    width: 100%;
+.portrait:hover img,
+.portrait:focus-visible img {
+    filter: none;
 }
 
-.panel {
-    flex: 1 1 0;
-    min-width: 0;
+.readout {
     display: flex;
     flex-direction: column;
-    position: relative;
-    text-decoration: none;
+    gap: 6px;
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--line);
 }
 
-/* Shadow falls between the images only; clip-path keeps it off the labels */
-.panel + .panel img {
-    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.22);
-    clip-path: inset(0 0 0 -40px);
-}
-
-.panel:nth-child(2) { z-index: 1; }
-.panel:nth-child(3) { z-index: 2; }
-
-.panel img {
-    width: 100%;
-    height: 440px;
-    object-fit: cover;
-}
-
-.panel--mural img { object-position: 30% 50%; }
-.panel--network img { object-position: 34% 50%; }
-.panel--ml img { object-position: 26% 50%; }
-
-.panel-label {
-    flex: 1 0 auto;
+.readout div {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    min-height: 52px;
-    padding: 12px 18px;
-    background: var(--paper);
+    gap: 12px;
+}
+
+.readout dt {
+    flex: 0 0 44px;
+    color: var(--mute);
+}
+
+.readout dd {
     color: var(--ink);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    transition: background 0.15s ease, color 0.15s ease;
-}
-
-.panel-label svg {
-    flex: 0 0 auto;
-}
-
-.panel:hover .panel-label {
-    background: var(--ink);
-    color: #FFFFFF;
-}
-
-.panel:focus-visible {
-    outline-offset: -3px;
+    text-transform: none;
+    letter-spacing: 0.2px;
 }
 
 /* ---------- Sections ---------- */
 .section {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 104px var(--gutter) 24px;
+    padding: 0 var(--gutter) 96px;
+    scroll-margin-top: var(--nav-h);
 }
 
 .section--bleed {
@@ -202,176 +315,41 @@ h1 {
     padding-right: 0;
 }
 
-.section--last {
-    padding-bottom: 72px;
-}
-
 .wrap {
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--gutter);
 }
 
+.section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding-top: 20px;
+    margin-bottom: 32px;
+    border-top: 1px solid var(--rule);
+}
+
 h2 {
-    margin-bottom: 40px;
-    font-size: 48px;
-    line-height: 1.02;
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.05;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    font-weight: 700;
 }
 
 h3 {
-    font-size: 36px;
-    line-height: 1.05;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.1;
     font-weight: 700;
 }
 
 .tag {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-}
-
-/* ---------- Cards ---------- */
-.card {
-    background: var(--paper);
-    border: 1px solid var(--ink);
-    border-radius: var(--radius);
-    overflow: hidden;
-}
-
-.card-row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.card--feature + .card--feature {
-    margin-top: 24px;
-}
-
-.card--reverse .card-row {
-    flex-direction: row-reverse;
-}
-
-/* Hairline between image and text: vertical side by side, horizontal when stacked.
-   If the text column is ever taller, the image stays centred instead of top-aligned. */
-.card-media {
-    flex: 999 1 560px;
-    min-width: 0;
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: var(--media);
-    box-shadow: 1px 0 0 var(--ink), 0 1px 0 var(--ink);
-}
-
-.card--reverse .card-media {
-    box-shadow: -1px 0 0 var(--ink), 0 1px 0 var(--ink);
-}
-
-.card-media--dark { background: var(--media-dark); }
-.card-media--white { background: var(--paper); }
-
-.card-media img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-}
-
-.card-body {
-    flex: 1 1 300px;
-    min-width: 0;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 14px;
-}
-
-.card-lead {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-.card-text {
-    font-size: 17px;
-    line-height: 1.45;
-    color: var(--muted);
-}
-
-/* ---------- Expandable text ---------- */
-.card[data-expand] {
-    cursor: pointer;
-}
-
-.card-more {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
-}
-
-.card-more-inner {
-    min-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    transition: visibility 0.3s;
-}
-
-.card-more-text {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 28px 32px 32px;
-    border-top: 1px solid var(--ink);
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--muted);
-}
-
-.card-more-text p {
-    max-width: 40em;
-}
-
-.card--paper .card-more-text {
-    padding: 24px 28px 28px;
-}
-
-.card.is-open .card-more {
-    grid-template-rows: 1fr;
-}
-
-.card.is-open .card-more-inner {
-    visibility: visible;
-}
-
-.more-toggle {
-    font-family: inherit;
-    cursor: pointer;
-}
-
-.more-toggle svg {
-    transition: transform 0.2s ease;
-}
-
-.card.is-open .more-toggle svg {
-    transform: rotate(45deg);
-}
-
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .card--feature,
-    .card--paper {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card--feature:hover,
-    .card--paper:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 28px rgba(17, 17, 17, 0.12);
-    }
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--mute);
 }
 
 /* ---------- Pills ---------- */
@@ -379,91 +357,400 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 6px;
 }
 
 .pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     min-height: 44px;
     padding: 0 18px;
-    border: 1px solid var(--ink);
+    border: 1px solid var(--line2);
     border-radius: 999px;
-    background: var(--paper);
+    background: transparent;
     color: var(--ink);
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     text-decoration: none;
+    cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
 }
 
 .pill:hover {
     background: var(--ink);
-    color: #FFFFFF;
+    color: var(--bg);
 }
 
-/* ---------- Papers ---------- */
-.paper-grid {
+.more svg {
+    transition: transform 0.2s ease;
+}
+
+.more[aria-expanded="true"] svg {
+    transform: rotate(45deg);
+}
+
+/* ---------- Expand (tools MORE, paper rows, illustrations) ---------- */
+.expand {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: 24px;
-    margin-top: 24px;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
 }
 
-/* Equal heights while closed; an opened card grows alone, no empty neighbour */
-.paper-grid:has(.card.is-open) {
-    align-items: start;
+.expand-inner {
+    min-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: visibility 0.3s;
 }
 
-.card--paper {
+.expand.is-open {
+    grid-template-rows: 1fr;
+}
+
+.expand.is-open > .expand-inner {
+    visibility: visible;
+}
+
+/* ---------- Tools ---------- */
+.tool {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.tool.is-clickable {
+    cursor: pointer;
+}
+
+.tool .tool-more {
+    cursor: auto;
+}
+
+.tool-bar {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    color: var(--mute);
 }
 
-.card-figure {
-    padding: 24px;
-    border-bottom: 1px solid var(--ink);
+.bar-dots {
+    display: flex;
+    gap: 6px;
+    flex: none;
 }
 
-.card-figure img {
+.bar-dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--mute);
+    opacity: 0.5;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+/* Easter egg: hover the fake browser bar and the dots turn macOS colours. They do nothing. */
+.tool-bar:hover .bar-dots i { opacity: 1; }
+.tool-bar:hover .bar-dots i:nth-child(1) { background: #FF5F57; }
+.tool-bar:hover .bar-dots i:nth-child(2) { background: #FEBC2E; }
+.tool-bar:hover .bar-dots i:nth-child(3) { background: #28C840; }
+
+.bar-host {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: none;
+    letter-spacing: 0.3px;
+}
+
+.live {
+    margin-left: auto;
+    flex: none;
+    color: var(--acc);
+    font-weight: 600;
+}
+
+/* Screenshot on top, text below, with a hairline between */
+.tool-media {
+    background: var(--media-bg, var(--panel));
+    box-shadow: 0 1px 0 var(--line);
+}
+
+.tool-media img {
     width: 100%;
     height: auto;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 16 / 9;
     object-fit: contain;
 }
 
-.card--paper .card-body {
-    flex: 1 1 auto;
-    justify-content: flex-start;
-    gap: 10px;
-    padding: 24px 28px 28px;
+.tool-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px 32px 32px;
 }
 
-.card--paper h3 {
-    font-size: 26px;
-    line-height: 1.15;
+.tool-body .pills {
+    margin-top: 6px;
+}
+
+.tool-lead {
+    max-width: 30em;
+    color: var(--soft);
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 24px;
+}
+
+.tool-more {
+    padding: 24px 32px 28px;
+    border-top: 1px solid var(--line);
+}
+
+.tool-detail {
+    max-width: 40em;
+    color: var(--soft);
+}
+
+/* Pane / UI names inside running text, in the site's label font. */
+.ui {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .tool {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tool:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px var(--lift);
+    }
+}
+
+/* ---------- Papers (accordion) ---------- */
+.papers {
+    border-top: 1px solid var(--line);
+}
+
+.paper {
+    border-bottom: 1px solid var(--line);
+}
+
+.paper h3 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.paper-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 72px 1fr 32px;
+    align-items: start;
+    gap: 16px;
+    padding: 22px 0;
+    border: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.paper-year {
+    font-family: var(--sans);
+    font-weight: 400;
+    padding-top: 7px;
+    color: var(--mute);
+}
+
+.paper-main {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.paper-title {
+    font-size: clamp(20px, 2.2vw, 24px);
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.paper-row:hover .paper-title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
 }
 
 .authors {
     font-size: 16px;
     line-height: 1.45;
-    color: var(--muted);
+    color: var(--mute);
 }
 
 .authors strong {
     color: var(--ink);
 }
 
+/* + that turns into − */
+.sign {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin: 6px 0 0 auto;
+}
+
+.sign::before,
+.sign::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease;
+}
+
+.sign::after {
+    transform: rotate(90deg);
+}
+
+.paper-row[aria-expanded="true"] .sign::after {
+    transform: rotate(0deg);
+}
+
+.paper-detail {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+    gap: 20px 32px;
+    padding: 0 0 28px 88px;
+}
+
+/* Abstract + pills take 3/5; the figure takes 2/5 (stacks on phones). */
+.paper-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.abstract {
+    margin: 0;
+    color: var(--soft);
+}
+
+.paper-figure {
+    padding: 20px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+}
+
+.paper-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ---------- Path & Service ---------- */
+.timeline {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.timeline li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 24px 26px 26px;
+    background: var(--panel);
+}
+
+.t-year {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.t-degree {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.t-where,
+.t-sub {
+    color: var(--mute);
+}
+
+.t-note {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--soft);
+}
+
+.service {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.service-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 26px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel);
+}
+
+.service-block h3 {
+    font-size: 24px;
+}
+
+.service-block p {
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--soft);
+}
+
 /* ---------- Illustration ---------- */
 .mural {
+    display: flex;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    background: var(--paper);
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     cursor: grab;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+}
+
+.mural::-webkit-scrollbar {
+    display: none;
 }
 
 .mural.is-dragging {
@@ -471,22 +758,17 @@ h3 {
 }
 
 .mural.mural--fits {
-    cursor: auto;
+    cursor: pointer;
 }
 
-/* When it scrolls, give the (overlay) scrollbar its own strip below the art */
-.mural:not(.mural--fits) {
-    padding-bottom: 14px;
-}
-
-.mural--fits + .wrap .hint {
-    visibility: hidden;
-}
-
-/* Whole mural, edge to edge, uncropped. Phones switch to a swipeable panorama below. */
+/* Whole mural, uncropped. Tall enough that it is always wider than the screen
+   (width = 2.75 × height), so it always scrolls sideways. */
 .mural img {
-    width: 100%;
-    height: auto;
+    flex: none;
+    width: auto;
+    height: max(750px, 40vw);
+    max-width: none;
+    margin: 0 auto;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -494,21 +776,28 @@ h3 {
 .mural-caption {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px 24px;
-    padding-top: 14px;
-    font-size: 16px;
-    color: var(--muted);
+    align-items: center;
+    gap: 12px 24px;
+    padding-top: 16px;
 }
 
 .mural-caption strong {
-    color: var(--ink);
+    font-size: 18px;
+}
+
+.mural-caption .pill {
+    margin-left: auto;
 }
 
 .hint {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    color: var(--mute);
+}
+
+.mural--fits + .wrap .hint {
+    display: none;
 }
 
 .hint--touch {
@@ -517,23 +806,16 @@ h3 {
 
 @media (hover: none) {
     .hint--mouse { display: none; }
-    .hint--touch { display: inline-flex; }
+    .hint--touch { display: inline; }
 }
 
 .label {
     margin: 40px 0 12px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    color: var(--mute);
 }
 
 /* Justified rows (built in script.js): every image in a row shares one height,
    each row fills the width exactly, nothing is cropped. */
-.gallery {
-    margin-top: 40px;
-}
-
 .plans,
 .gallery,
 .jrow {
@@ -565,50 +847,26 @@ h3 {
     border-radius: 8px;
 }
 
+.gallery {
+    padding-top: 32px;
+}
+
+.plans {
+    padding-bottom: 8px;
+}
+
 .zoom {
     cursor: zoom-in;
-}
-
-/* ---------- Collaboration and Service ---------- */
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-    gap: 24px;
-    align-items: start;
-}
-
-.service-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.card--plain {
-    padding: 24px 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.card--plain h3 {
-    font-size: 24px;
-}
-
-.card--plain p {
-    font-size: 17px;
-    line-height: 1.45;
-    color: var(--muted);
 }
 
 /* ---------- Contact ---------- */
 .contact-links {
     list-style: none;
-    margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 12px 44px;
-    font-size: 34px;
+    font-size: clamp(30px, 4vw, 48px);
     font-weight: 700;
 }
 
@@ -620,23 +878,40 @@ h3 {
 }
 
 .contact-links a:hover {
-    border-color: var(--hover);
+    color: var(--mute);
+    border-color: var(--mute);
 }
 
 .funfact {
     margin-top: 40px;
     max-width: 36em;
     font-size: 19px;
-    line-height: 1.5;
-    color: var(--muted);
+    color: var(--mute);
 }
 
 /* ---------- Footer ---------- */
 .footer {
     border-top: 1px solid var(--rule);
+    color: var(--mute);
+}
+
+.footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
     padding: 24px var(--gutter) calc(24px + env(safe-area-inset-bottom));
-    font-size: 15px;
-    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.footer a {
+    color: var(--mute);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--ink);
 }
 
 /* ---------- Lightbox ---------- */
@@ -660,7 +935,7 @@ h3 {
 }
 
 .lightbox::backdrop {
-    background: rgba(17, 17, 17, 0.92);
+    background: rgba(14, 15, 18, 0.92);
 }
 
 .lightbox img {
@@ -670,7 +945,7 @@ h3 {
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-    background: var(--paper);
+    background: #FFFFFF;
 }
 
 .lightbox-close {
@@ -688,140 +963,61 @@ h3 {
     cursor: pointer;
 }
 
-/* ---------- Phones (portrait) ---------- */
+/* ---------- Narrower screens ---------- */
 @media (max-width: 600px) {
     body { font-size: 17px; }
 
+    .nav-inner { gap: 12px; }
+    .nav-right { gap: 10px; }
+
     .hero {
-        padding: 32px 16px;
-        gap: 16px;
+        padding-top: 40px;
+        padding-bottom: 64px;
     }
 
-    .hero-text { gap: 16px; }
+    .portrait { flex-basis: 100%; }
 
-    h1 {
-        font-size: 60px;
-        letter-spacing: -1px;
+    .section { padding-bottom: 72px; }
+
+    .tool-body,
+    .tool-more { padding: 22px 20px 24px; }
+
+    .timeline { grid-template-columns: 1fr; }
+
+    .paper-row {
+        grid-template-columns: 1fr 24px;
+        gap: 8px 12px;
     }
 
-    .lede { font-size: 22px; }
-
-    .prose {
-        gap: 12px;
-        font-size: 17px;
+    .paper-year {
+        grid-column: 1 / -1;
+        padding-top: 0;
     }
 
-    .portrait { width: 120px; }
+    .paper-main { grid-column: 1; }
+    .sign { grid-column: 2; grid-row: 2; }
 
-    .banner { flex-direction: column; }
-    .panel img { height: 280px; }
-    .panel + .panel img { box-shadow: none; }
-    .panel-label { padding: 12px 16px; }
-
-    .section { padding: 64px 16px 0; }
-    .section--bleed { padding-left: 0; padding-right: 0; }
-    .section--last { padding-bottom: 48px; }
-
-    h2 {
-        margin-bottom: 28px;
-        font-size: 34px;
+    .paper-detail {
+        grid-template-columns: 1fr;
+        padding-left: 0;
     }
 
-    h3 { font-size: 28px; }
+    .mural-caption .pill { margin-left: 0; }
 
-    .tag { font-size: 12px; }
+    .mural img { height: 300px; }
+}
 
-    .card-body {
-        padding: 20px;
-        gap: 10px;
-    }
-
-    .card-lead { font-size: 18px; }
-    .card-text { font-size: 16px; }
-    .card-more-text,
-    .card--paper .card-more-text {
-        padding: 20px;
-        gap: 12px;
-        font-size: 16px;
-    }
-    .pill { padding: 0 16px; }
-
-    .paper-grid,
-    .card--feature + .card--feature { margin-top: 16px; }
-    .paper-grid { gap: 16px; }
-
-    .card-figure { padding: 16px; }
-    .card--paper .card-body { padding: 18px 20px 20px; }
-    .card--paper h3 { font-size: 23px; }
-    .authors { font-size: 15px; }
-
-    .mural img {
-        width: auto;
-        max-width: none;
-        height: 300px;
-    }
-    .mural-caption { font-size: 15px; }
-    .label { margin: 32px 0 10px; font-size: 12px; }
-    .gallery { margin-top: 28px; }
-    .plans,
-    .gallery,
-    .jrow { gap: 12px; }
-    .plans a,
-    .gallery a { flex-basis: 140px; }
-
-    .service-grid,
-    .service-stack { gap: 12px; }
-    .card--plain { padding: 20px; }
-    .card--plain h3 { font-size: 22px; }
-    .card--plain p { font-size: 16px; }
-
-    .contact-links {
-        gap: 10px 28px;
-        font-size: 24px;
-    }
-
-    .funfact {
-        margin-top: 28px;
-        font-size: 17px;
+@media (max-width: 440px) {
+    .switch-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
     }
 }
 
-/* ---------- Phones (landscape) ---------- */
-@media (orientation: landscape) and (max-height: 500px) {
-    .hero {
-        flex-wrap: nowrap;
-        padding-top: 28px;
-        padding-bottom: 28px;
-        gap: 32px;
-    }
-
-    .hero-text { gap: 12px; }
-    h1 { font-size: 60px; letter-spacing: -1px; }
-    .lede { font-size: 22px; }
-    .prose { font-size: 16px; gap: 10px; }
-    .portrait { width: 186px; }
-
-    .panel img { height: 240px; }
-
-    .section { padding-top: 56px; }
-    h2 { font-size: 34px; margin-bottom: 24px; }
-    h3 { font-size: 28px; }
-
-    .card-media { flex: 1 1 55%; }
-    .card-body {
-        flex: 1 1 240px;
-        padding: 18px 20px;
-        gap: 8px;
-    }
-    .card-lead { font-size: 16px; }
-    .card-text { font-size: 15px; }
-
-}
-
-/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-
     *,
     *::before,
     *::after {

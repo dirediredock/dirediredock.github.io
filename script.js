@@ -1,5 +1,20 @@
 (() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const root = document.documentElement;
+
+    // Theme: light by default; the toggle switches to dark and remembers it.
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        const render = () => {
+            themeToggle.setAttribute('aria-checked', String(root.dataset.theme === 'dark'));
+        };
+        render();
+        themeToggle.addEventListener('click', () => {
+            root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+            try { localStorage.setItem('theme', root.dataset.theme); } catch (e) { /* storage blocked: still switches */ }
+            render();
+        });
+    }
 
     // Gallery: shuffle the illustrations on every page load (Fisher–Yates).
     const gallery = document.querySelector('.gallery');
@@ -75,16 +90,34 @@
     if (plans) justify(plans, () => (phone.matches ? 110 : 150));
     if (gallery) justify(gallery, () => (phone.matches ? 150 : 260));
 
-    // Expandable cards: click anywhere on the card (except a link) to show more text.
-    document.querySelectorAll('.card[data-expand]').forEach((card) => {
-        const toggle = card.querySelector('.more-toggle');
-        const label = toggle && toggle.querySelector('.more-label');
+    // Expand buttons: any button with aria-controls opens/closes that region.
+    const setOpen = (button, open) => {
+        const region = document.getElementById(button.getAttribute('aria-controls'));
+        if (!region) return;
+        region.classList.toggle('is-open', open);
+        button.setAttribute('aria-expanded', String(open));
+        const label = button.querySelector('.more-label');
+        if (label) {
+            if (!label.dataset.closed) label.dataset.closed = label.textContent;
+            label.textContent = open ? (button.dataset.openLabel || 'Close') : label.dataset.closed;
+        }
+    };
+    document.querySelectorAll('button[aria-controls]').forEach((button) => {
+        button.addEventListener('click', () => {
+            setOpen(button, button.getAttribute('aria-expanded') !== 'true');
+        });
+    });
+
+    // Tool cards: a click anywhere on the card works like its Details button.
+    // Skipped for links, buttons, the open Details text, and text selections.
+    document.querySelectorAll('.tool').forEach((card) => {
+        const details = card.querySelector('button.more');
+        if (!details) return;
+        card.classList.add('is-clickable');
         card.addEventListener('click', (event) => {
-            if (event.target.closest('a')) return;
-            if (!event.target.closest('.more-toggle') && String(window.getSelection())) return;
-            const open = card.classList.toggle('is-open');
-            if (toggle) toggle.setAttribute('aria-expanded', String(open));
-            if (label) label.textContent = open ? 'Less' : 'More';
+            if (event.target.closest('a, button, .tool-more')) return;
+            if (String(window.getSelection())) return;
+            details.click();
         });
     });
 
@@ -116,7 +149,17 @@
 
         const takeOver = () => { userTookOver = true; };
 
+        const revealButton = document.querySelector('[aria-controls="more-illustration"]');
+        let downX = 0;
+        let downScroll = 0;
+        mural.addEventListener('click', (event) => {
+            const moved = Math.abs(event.clientX - downX) + Math.abs(mural.scrollLeft - downScroll);
+            if (revealButton && moved < 6) setOpen(revealButton, true);
+        });
+
         mural.addEventListener('pointerdown', (event) => {
+            downX = event.clientX;
+            downScroll = mural.scrollLeft;
             takeOver();
             if (event.pointerType !== 'mouse') return;
             dragging = true;

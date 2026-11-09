@@ -1,320 +1,385 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Matt Oddo: data scientist and PhD Candidate at UBC Computer Science. Network interpretability, ML interpretability, and scientific illustration.">
+    <meta name="description" content="Matt Oddo: data scientist and PhD Candidate at UBC Computer Science. Visual instruments to see inside networks and models, plus scientific illustration.">
     <title>Matt Oddo</title>
+    <script>
+        // Light by default; dark only if the visitor chose it before. Runs before paint, so no flash.
+        try { if (localStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
-    <header class="hero" id="top">
-        <div class="hero-text">
-            <h1>Matt Oddo</h1>
-            <p class="lede">I build visual instruments to see inside networks and models.</p>
-            <div class="prose">
-                <p>Hi folks!</p>
-                <p>
-                    I'm a data scientist and PhD Candidate at the <a href="https://www.cs.ubc.ca/" target="_blank" rel="noopener noreferrer">Department of Computer Science</a> of the <a href="https://www.ubc.ca/" target="_blank" rel="noopener noreferrer">University of British Columbia</a>.
-                    I build tools and research the theory and practice of 'invariant plots' (alternative network visualization) with <a href="https://www.cs.ubc.ca/~tmm/" target="_blank" rel="noopener noreferrer">Tamara Munzner</a>, <a href="https://www2.cs.arizona.edu/~kobourov/" target="_blank" rel="noopener noreferrer">Stephen Kobourov</a>, and team peers at the <a href="https://www.cs.ubc.ca/group/infovis/" target="_blank" rel="noopener noreferrer">InfoVis Group</a>.
-                </p>
-                <p>
-                    I'm Chilean and Canadian, <strong>Matías Ignacio Bofarull Oddó</strong> 🇨🇱 is my long name, <strong>Matt Oddo</strong> 🇨🇦 for short, and <strong>Matt I. B. Oddo</strong> 📖 for publishing purposes.
-                </p>
-                <p>
-                    I have interdisciplinary interests and academic background: biology BSc (2016, UBC-O), earth science MSc (2019, UBC EOAS), and computer science PhD (2027, UBC CS).
-                </p>
-                <div class="pills">
-                    <a class="pill" href="#contact">Contact
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></a>
-                </div>
+    <nav class="nav" aria-label="Main">
+        <div class="nav-inner">
+            <a class="nav-name" href="#top">MATT ODDO</a>
+            <span class="status"><span class="dot" aria-hidden="true"></span>Available 2027</span>
+            <div class="nav-right">
+                <button class="theme-toggle" type="button" role="switch" aria-checked="false"><span class="switch-label">Dark mode</span><span class="switch" aria-hidden="true"></span></button>
             </div>
         </div>
-        <img class="portrait" src="figures/profile.jpg" width="600" height="800" alt="Portrait of Matt Oddo">
-    </header>
-
-    <nav class="banner" id="banner" aria-label="Sections">
-        <a class="panel panel--mural" href="#illustration">
-            <img src="figures/research/mural-banner.jpg" width="2400" height="874" alt="">
-            <span class="panel-label">Scientific Illustration
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
-            </span>
-        </a>
-        <a class="panel panel--network" href="#network">
-            <img src="figures/research/selectoscope.jpg" width="2000" height="1119" alt="">
-            <span class="panel-label">Network interpretability
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
-            </span>
-        </a>
-        <a class="panel panel--ml" href="#ml">
-            <img src="figures/research/e3.jpg" width="2000" height="1133" alt="">
-            <span class="panel-label">ML interpretability
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
-            </span>
-        </a>
     </nav>
 
-    <main>
-        <section class="section" id="network">
-            <h2>Network interpretability</h2>
+    <header class="hero" id="top">
+        <div class="hero-text">
+            <p class="eyebrow">PhD Candidate -- UBC Computer Science -- InfoVis Group</p>
+            <h1>Matt Oddo</h1>
+            <p class="lede">I build visual instruments to see inside<br>networks and models.</p>
+            <p class="bio">I'm a PhD Candidate at UBC building interactive visualization tools that make network and ML model structure interpretable, with Tamara Munzner, Stephen Kobourov, and team peers at the InfoVis Group. I'm looking for interpretability research roles starting in 2027.</p>
+            <div class="pills">
+                <a class="pill" href="#tools">Tools
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></a>
+                <a class="pill" href="#papers">Papers
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></a>
+                <a class="pill" href="#contact">Contact
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></a>
+            </div>
+        </div>
+        <figure class="portrait" tabindex="0">
+            <img src="figures/profile.jpg" width="600" height="800" alt="Portrait of Matt Oddo">
+            <dl class="readout">
+                <div><dt>Name</dt><dd>Matías Ignacio Bofarull Oddó</dd></div>
+                <div><dt>From</dt><dd>Chile, Canada</dd></div>
+                <div><dt>Base</dt><dd>Vancouver, BC</dd></div>
+            </dl>
+        </figure>
+    </header>
 
-            <article class="card card--feature" data-expand>
-                <div class="card-row">
-                    <div class="card-media">
-                        <img src="figures/research/selectoscope.jpg" width="2000" height="1119" loading="lazy" alt="Selectoscope: a network shown in linked node-link, matrix, shells and hops views, with one selection highlighted across all of them">
-                    </div>
-                    <div class="card-body">
-                        <span class="tag">Tool · work in progress</span>
-                        <h3>Selectoscope</h3>
-                        <p class="card-lead">An instrument to visually explore network structure through linked interpretable views of labeled and unlabeled network views.</p>
-                        <div class="pills">
-                            <a class="pill" href="https://selectoscope.netlify.app" target="_blank" rel="noopener noreferrer">Try it live
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://github.com/dirediredock/SELECTOSCOPE" target="_blank" rel="noopener noreferrer">Code
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <button class="pill more-toggle" type="button" aria-expanded="false" aria-controls="more-selectoscope"><span class="more-label">More</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
-                        </div>
+    <main>
+        <section class="section" id="tools">
+            <div class="section-head">
+                <h2>Tools</h2>
+            </div>
+
+            <article class="tool tool--wide">
+                <div class="tool-bar">
+                    <span class="bar-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="bar-host">selectoscope.netlify.app</span>
+                    <span class="live">● Live</span>
+                </div>
+                <div class="tool-media" style="--media-bg: #E7E8ED">
+                    <img src="figures/research/selectoscope.jpg" width="2000" height="1119" loading="lazy" alt="Selectoscope: a network shown in linked node-link, matrix, shells and hops views, with one selection highlighted across all of them">
+                </div>
+                <div class="tool-body">
+                    <span class="tag">2026</span>
+                    <h3>Selectoscope</h3>
+                    <p class="tool-lead">An instrument to visually explore network structure through linked interpretable views of labeled and unlabeled networks. Select a visual pattern in one pane to examine the same selection in every other pane.</p>
+                    <div class="pills">
+                        <a class="pill" href="https://selectoscope.netlify.app" target="_blank" rel="noopener noreferrer">Run
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                        <a class="pill" href="https://github.com/dirediredock/SELECTOSCOPE" target="_blank" rel="noopener noreferrer">Code
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                        <button class="pill more" type="button" aria-expanded="false" aria-controls="more-selectoscope"><span class="more-label">Details</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
                     </div>
                 </div>
-                <div class="card-more" id="more-selectoscope">
-                    <div class="card-more-inner">
-                        <div class="card-more-text">
-                            <p>A familiar view (NodeLink, Labels) beside interpretable views of density (Shells), eccentricity (Hops) and decomposition (Matrix), linked by one selection.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <div class="expand" id="more-selectoscope">
+                    <div class="expand-inner">
+                        <div class="tool-more">
+                            <p class="tool-detail">Selectoscope is a visual tool that lets you explore network structure through linked interpretable views: select nodes and/or edges from the visual pattern in one pane to examine the same selection set in the other panes. Each pane draws the same network in its own way: a familiar <span class="ui">NODELINK</span> pane; a <span class="ui">MATRIX</span> pane with edge points ordered by spectral harmonics or PCA; the <span class="ui">SHELLS</span> pane that shows density variability from dense core to the sparse periphery; and the <span class="ui">HOPS</span> pane, which shows how eccentricity, or placement within network structure in terms of hops, varies from central to peripheral nodes. An <span class="ui">AUTO SWEEP</span> toggle can scan the visual patterns in a pane through a selection band. Users can load their own network datasets, with all processing happening in the browser at runtime, never leaving the user&rsquo;s machine.</p>
                         </div>
                     </div>
                 </div>
             </article>
 
-            <div class="paper-grid">
-                <article class="card card--paper" data-expand>
-                    <div class="card-figure">
-                        <img src="figures/research/task-taxonomy.png" width="1000" height="2100" loading="lazy" alt="Task taxonomy figure: target plus action plus scope">
+            <div class="tool-grid">
+                <article class="tool tool--wide">
+                    <div class="tool-bar">
+                        <span class="bar-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="bar-host">dskxs5i5l1tmk.cloudfront.net</span>
+                        <span class="live">● Live</span>
                     </div>
-                    <div class="card-body">
-                        <span class="tag">My research · 2025</span>
-                        <h3>Visualization Tasks for Unlabelled Graphs</h3>
-                        <p class="authors"><strong>Matt I. B. Oddo</strong>, Ryan Smith, Stephen Kobourov, Tamara Munzner</p>
-                        <div class="pills">
-                            <a class="pill" href="https://arxiv.org/abs/2504.14115" target="_blank" rel="noopener noreferrer">arXiv
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://osf.io/e23mr/" target="_blank" rel="noopener noreferrer">Supplement
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <button class="pill more-toggle" type="button" aria-expanded="false" aria-controls="more-tasks"><span class="more-label">More</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
-                        </div>
-                    </div>
-                    <div class="card-more" id="more-tasks">
-                        <div class="card-more-inner">
-                            <div class="card-more-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="card card--paper" data-expand>
-                    <div class="card-figure">
-                        <img src="figures/research/census-stub.png" width="1400" height="1400" loading="lazy" alt="Census-stub invariant plot of three graph families">
-                    </div>
-                    <div class="card-body">
-                        <span class="tag">My research · 2024</span>
-                        <h3>The Census-Stub Graph Invariant Descriptor</h3>
-                        <p class="authors"><strong>Matt I. B. Oddo</strong>, Stephen Kobourov, Tamara Munzner</p>
-                        <div class="pills">
-                            <a class="pill" href="https://arxiv.org/abs/2412.04582" target="_blank" rel="noopener noreferrer">arXiv
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://www.cs.ubc.ca/group/infovis/pubs/2025/censusstub" target="_blank" rel="noopener noreferrer">Paper page
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://osf.io/nmzra/" target="_blank" rel="noopener noreferrer">Supplement
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://osf.io/bgqe7/" target="_blank" rel="noopener noreferrer">Code
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <button class="pill more-toggle" type="button" aria-expanded="false" aria-controls="more-censusstub"><span class="more-label">More</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
-                        </div>
-                    </div>
-                    <div class="card-more" id="more-censusstub">
-                        <div class="card-more-inner">
-                            <div class="card-more-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="section" id="ml">
-            <h2>ML interpretability</h2>
-
-            <article class="card card--feature" data-expand>
-                <div class="card-row">
-                    <div class="card-media card-media--dark">
+                    <div class="tool-media" style="--media-bg: #12111C">
                         <img src="figures/research/e3.jpg" width="2000" height="1133" loading="lazy" alt="E3: a satellite scene beside its embedding-similarity map, a 3D point cloud and ranked principal components">
                     </div>
-                    <div class="card-body">
-                        <span class="tag">Tool · geospatial foundation models</span>
-                        <h3>E3 · Earth Embeddings Explainer</h3>
-                        <p class="card-lead">A zero-backend React web app for probing the embedding space of Geospatial Foundation Models (GFMs).</p>
+                    <div class="tool-body">
+                        <span class="tag">2026</span>
+                        <h3>E3 -- Earth Embeddings Explainer</h3>
+                        <p class="tool-lead">An interactive visualization tool for probing the embedding space of Geospatial Foundation Models (GFMs). Five linked panes run from familiar satellite imagery to abstract principal components.</p>
                         <div class="pills">
-                            <button class="pill more-toggle" type="button" aria-expanded="false" aria-controls="more-e3"><span class="more-label">More</span>
+                            <a class="pill" href="https://dskxs5i5l1tmk.cloudfront.net/" target="_blank" rel="noopener noreferrer">Run
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                            <button class="pill more" type="button" aria-expanded="false" aria-controls="more-e3"><span class="more-label">Details</span>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
                         </div>
                     </div>
-                </div>
-                <div class="card-more" id="more-e3">
-                    <div class="card-more-inner">
-                        <div class="card-more-text">
-                            <p>Exploration is confined to a single 8km × 13km scene, about 116,000 patches.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <div class="expand" id="more-e3">
+                        <div class="expand-inner">
+                            <div class="tool-more">
+                                <p class="tool-detail">E3 comes from a summer 2026 software engineering internship at EarthDaily Analytics in Vancouver. E3 explores earth embeddings, which are high-dimensional &ldquo;fingerprints&rdquo; of Geospatial Foundation Models that compute and compress rich information about natural and human-driven phenomena for discrete points on Earth&rsquo;s surface. Five linked panes run from familiar to abstract: the <span class="ui">SCENE</span> pane that shows the area of interest with satellite imagery; the <span class="ui">SIMILARITY</span> pane that shows a cosine-similarity heatmap; the <span class="ui">SIFT</span> pane with a histogram filter for similar and dissimilar patches; the <span class="ui">PCA</span> pane, with a 3D point cloud that places geometrically proximal embeddings while keeping their cosine similarity heatmap coloring, and the <span class="ui">RANKING</span> pane, which ranks the principal components by how well they separate a manual selection. E3 ships with AlphaEarth and OlmoEarth (Nano and Tiny) embeddings for 20 curated scenes of about 115,000 patches each.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="card card--feature card--reverse" data-expand>
-                <div class="card-row">
-                    <div class="card-media card-media--white">
+                <article class="tool tool--wide">
+                    <div class="tool-bar">
+                        <span class="bar-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="bar-host">riskomon.netlify.app</span>
+                        <span class="live">● Live</span>
+                    </div>
+                    <div class="tool-media" style="--media-bg: #FFFFFF">
                         <img src="figures/research/riskomon.jpg" width="2000" height="1120" loading="lazy" alt="Riskomon: feature rows and model columns of a Rashomon set, with model cards below">
                     </div>
-                    <div class="card-body">
-                        <span class="tag">Collaboration · 2024</span>
+                    <div class="tool-body">
+                        <span class="tag">2024</span>
                         <h3>Riskomon</h3>
-                        <p class="card-lead">Card Deck Explorer for a FasterRisk Rashomon Set</p>
+                        <p class="tool-lead">A card deck explorer for a FasterRisk Rashomon set. Drag features to re-sort many equally good risk-score models and pick the one that fits what you know.</p>
                         <div class="pills">
-                            <a class="pill" href="https://riskomon.netlify.app" target="_blank" rel="noopener noreferrer">Try it live
+                            <a class="pill" href="https://riskomon.netlify.app" target="_blank" rel="noopener noreferrer">Run
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
                             <a class="pill" href="https://github.com/dirediredock/Riskomon" target="_blank" rel="noopener noreferrer">Code
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
                             <a class="pill" href="https://www.youtube.com/watch?v=JzP4Mv4rbNE" target="_blank" rel="noopener noreferrer">Video
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <button class="pill more-toggle" type="button" aria-expanded="false" aria-controls="more-riskomon"><span class="more-label">More</span>
+                            <button class="pill more" type="button" aria-expanded="false" aria-controls="more-riskomon"><span class="more-label">Details</span>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
                         </div>
                     </div>
-                </div>
-                <div class="card-more" id="more-riskomon">
-                    <div class="card-more-inner">
-                        <div class="card-more-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-        <section class="section" id="service">
-            <h2>Service and Collaboration</h2>
-            <div class="service-grid">
-                <article class="card card--paper" data-expand>
-                    <div class="card-figure">
-                        <img src="figures/research/multiscale.jpg" width="1916" height="2500" loading="lazy" alt="Nine multiscale visualization examples, from xkcd Money to EVEVis, drawn in one style">
-                    </div>
-                    <div class="card-body">
-                        <span class="tag">Collaboration · 2025</span>
-                        <h3>A Design Space for Multiscale Visualization</h3>
-                        <p class="authors">Mara Solen, <strong>Matt I. B. Oddo</strong>, Tamara Munzner</p>
-                        <div class="pills">
-                            <a class="pill" href="https://arxiv.org/abs/2404.01485" target="_blank" rel="noopener noreferrer">arXiv
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://www.cs.ubc.ca/group/infovis/pubs/2025/multiscaledesignspace/" target="_blank" rel="noopener noreferrer">Paper page
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <a class="pill" href="https://osf.io/wbrdm/" target="_blank" rel="noopener noreferrer">Supplement
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-                            <button class="pill more-toggle" type="button" aria-expanded="false" aria-controls="more-multiscale"><span class="more-label">More</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
-                        </div>
-                    </div>
-                    <div class="card-more" id="more-multiscale">
-                        <div class="card-more-inner">
-                            <div class="card-more-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <div class="expand" id="more-riskomon">
+                        <div class="expand-inner">
+                            <div class="tool-more">
+                                <p class="tool-detail">Instead of a single black-box model, a Rashomon set holds many equally good risk-score models, all interpretable from the outset, so domain experts can pick the one that fits what they know. Riskomon shows each FasterRisk model as a column of feature bubbles, and selected models appear as cards at the bottom, like cards drawn from a deck. Dragging a feature up or down promotes or demotes it, and the model columns re-sort so the models matching those preferences move to the front. Designed and implemented by Matt Oddo with Jiachang Liu and Cynthia Rudin&rsquo;s Interpretable ML Lab at Duke, and Tamara Munzner, Margo Seltzer, and Francis Nguyen at UBC.</p>
                             </div>
                         </div>
                     </div>
                 </article>
-                <div class="service-stack">
-                    <article class="card card--plain">
-                        <span class="tag">Since 2024</span>
-                        <h3>3MT Lead</h3>
-                        <p>I organized and led UBC CS's inaugural participation in the university-wide Three-Minute Thesis (3MT) competition, and serve as current event host.</p>
-                    </article>
-                    <article class="card card--plain">
-                        <span class="tag">2024 to 2025 term</span>
-                        <h3>CSGSA President</h3>
-                        <p>Represent graduate students across research, teaching, and community life, the Computer Science Graduate Student Association (CSGSA) promotes the academic, mental, and social welfare of all MSc and PhD students, with representatives across all major department committees.</p>
-                    </article>
-                </div>
+            </div>
+        </section>
+
+        <section class="section" id="papers">
+            <div class="section-head">
+                <h2>Papers</h2>
+            </div>
+
+            <div class="papers">
+                <article class="paper">
+                    <h3>
+                        <button class="paper-row" type="button" aria-expanded="false" aria-controls="paper-tasks">
+                            <span class="paper-year">2026</span>
+                            <span class="paper-main">
+                                <span class="paper-title">Visualization Tasks for Unlabeled Graphs</span>
+                                <span class="authors"><strong>Matt I. B. Oddo</strong>, Ryan Smith, Stephen Kobourov, Tamara Munzner</span>
+                            </span>
+                            <span class="sign" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="expand" id="paper-tasks">
+                        <div class="expand-inner">
+                            <div class="paper-detail">
+                                <div class="paper-text">
+                                    <p class="abstract">We investigate tasks that can be accomplished with unlabeled graphs, which are graphs with nodes that do not have persistent or semantically meaningful labels attached. New visualization techniques to represent unlabeled graphs have been proposed, but more understanding of unlabeled graph tasks is required before these techniques can be adequately evaluated. Some network visualization tasks apply to both labeled and unlabeled graphs, but many do not translate between these contexts. We propose a data abstraction model that distinguishes the Unlabeled context from the increasingly semantically rich Labeled, Attributed, and Augmented contexts. We filter tasks collected and gleaned from the literature according to our data abstraction and analyze the surfaced tasks, leading to a taxonomy of abstract tasks for unlabeled graphs. Our task taxonomy is organized according to the Target data under consideration, the Action intended by the user, and the Scope of the data at play. We show the descriptive power of this task abstraction by connecting to concrete examples from previous frameworks, and connecting these abstractions to real-world problems. To showcase the evaluative power of the taxonomy, we perform a preliminary assessment across 6 different network visualization idioms for each task. For each combination of task and visual encoding, we consider the effort required from viewers, the likelihood of task success, and how both factors vary between small-scale and large-scale graphs.</p>
+                                    <div class="pills">
+                                        <a class="pill" href="https://ieeexplore.ieee.org/document/11449464" target="_blank" rel="noopener noreferrer">IEEE
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://arxiv.org/abs/2504.14115" target="_blank" rel="noopener noreferrer">arXiv
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://www.cs.ubc.ca/group/infovis/pubs/2026/unlabelledgraphstasks/" target="_blank" rel="noopener noreferrer">Paper page
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://osf.io/e23mr/" target="_blank" rel="noopener noreferrer">Supplement
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                    </div>
+                                </div>
+                                <div class="paper-figure">
+                                    <img src="figures/research/task-taxonomy.png" width="1000" height="2100" loading="lazy" alt="Task taxonomy figure: target plus action plus scope">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="paper">
+                    <h3>
+                        <button class="paper-row" type="button" aria-expanded="false" aria-controls="paper-multiscale">
+                            <span class="paper-year">2025</span>
+                            <span class="paper-main">
+                                <span class="paper-title">A Design Space for Multiscale Visualization</span>
+                                <span class="authors">Mara Solen, <strong>Matt I. B. Oddo</strong>, Tamara Munzner</span>
+                            </span>
+                            <span class="sign" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="expand" id="paper-multiscale">
+                        <div class="expand-inner">
+                            <div class="paper-detail">
+                                <div class="paper-text">
+                                    <p class="abstract">Designing multiscale visualizations, particularly when the ratio between the largest scale and the smallest item is large, can be challenging, and designers have developed many approaches to overcome this challenge. We present a design space for visualization with multiple scales. The design space includes three dimensions, with eight total subdimensions. We demonstrate its descriptive power by using it to code approaches from a corpus we compiled of 52 examples, created by a mix of academics and practitioners. We demonstrate descriptive power by analyzing and partitioning these examples into four high-level strategies for designing multiscale visualizations, which are shared approaches with respect to design space dimension choices. We demonstrate generative power by analyzing missed opportunities within the corpus of examples, identified through analysis of the design space, where we note how certain examples could have benefited from different choices. We discuss patterns in the use of different dimension and strategy choices in the different visualization contexts of analysis and presentation.</p>
+                                    <div class="pills">
+                                        <a class="pill" href="https://ieeexplore.ieee.org/document/11266968" target="_blank" rel="noopener noreferrer">IEEE
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://arxiv.org/abs/2404.01485" target="_blank" rel="noopener noreferrer">arXiv
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://www.cs.ubc.ca/group/infovis/pubs/2025/multiscaledesignspace/" target="_blank" rel="noopener noreferrer">Paper page
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://osf.io/wbrdm/" target="_blank" rel="noopener noreferrer">Supplement
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                    </div>
+                                </div>
+                                <div class="paper-figure">
+                                    <img src="figures/research/multiscale.jpg" width="1916" height="2500" loading="lazy" alt="Nine multiscale visualization examples, from xkcd Money to EVEVis, drawn in one style">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="paper">
+                    <h3>
+                        <button class="paper-row" type="button" aria-expanded="false" aria-controls="paper-censusstub">
+                            <span class="paper-year">2025</span>
+                            <span class="paper-main">
+                                <span class="paper-title">The Census-Stub Graph Invariant Descriptor</span>
+                                <span class="authors"><strong>Matt I. B. Oddo</strong>, Stephen Kobourov, Tamara Munzner</span>
+                            </span>
+                            <span class="sign" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="expand" id="paper-censusstub">
+                        <div class="expand-inner">
+                            <div class="paper-detail">
+                                <div class="paper-text">
+                                    <p class="abstract">An &lsquo;invariant descriptor&rsquo; captures meaningful structural features of networks, useful where traditional visualizations, like node-link views, face challenges like the &lsquo;hairball phenomenon&rsquo; (inscrutable overlap of points and lines). Designing invariant descriptors involves balancing abstraction and information retention, as richer data summaries demand more storage and computational resources. Building on prior work, chiefly the BMatrix&mdash;a matrix descriptor visualized as the invariant &lsquo;network portrait&rsquo; heatmap&mdash;we introduce BFS-Census, a new algorithm computing our Census data structures: Census-Node, Census-Edge, and Census-Stub. Our experiments show Census-Stub, which focuses on &lsquo;stubs&rsquo; (half-edges), has orders of magnitude greater discerning power (ability to tell non-isomorphic graphs apart) than any other descriptor in this study, without a difficult trade-off: the substantial increase in resolution doesn&rsquo;t come at a commensurate cost in storage space or computation power. We also present new visualizations&mdash;our Hop-Census polylines and Census-Census trajectories&mdash;and evaluate them using real-world graphs, including a sensitivity analysis that shows graph topology change maps to visual Census change.</p>
+                                    <div class="pills">
+                                        <a class="pill" href="https://ieeexplore.ieee.org/document/10786915" target="_blank" rel="noopener noreferrer">IEEE
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://arxiv.org/abs/2412.04582" target="_blank" rel="noopener noreferrer">arXiv
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://www.cs.ubc.ca/group/infovis/pubs/2025/censusstub" target="_blank" rel="noopener noreferrer">Paper page
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                        <a class="pill" href="https://osf.io/nmzra/" target="_blank" rel="noopener noreferrer">Supplement
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+                                    </div>
+                                </div>
+                                <div class="paper-figure">
+                                    <img src="figures/research/census-stub.png" width="1400" height="1400" loading="lazy" alt="Census-stub invariant plot of three graph families">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="path">
+            <div class="section-head">
+                <h2>Path &amp; Service</h2>
+            </div>
+
+            <ol class="timeline">
+                <li>
+                    <span class="t-year">2016</span>
+                    <span class="t-degree">BSc Biology</span>
+                    <span class="t-where">The University of British Columbia</span>
+                    <span class="t-sub">Irving K. Barber Faculty of Science</span>
+                    <span class="t-note">International Major Entrance Scholarship (IMES)</span>
+                </li>
+                <li>
+                    <span class="t-year">2019</span>
+                    <span class="t-degree">MSc Earth Science</span>
+                    <span class="t-where">The University of British Columbia</span>
+                    <span class="t-sub">Faculty of Science, Department of Earth, Ocean and Atmospheric Sciences</span>
+                </li>
+                <li>
+                    <span class="t-year">2027</span>
+                    <span class="t-degree">PhD Computer Science</span>
+                    <span class="t-where">The University of British Columbia</span>
+                    <span class="t-sub">Faculty of Science, Department of Computer Science</span>
+                    <span class="t-note">Four Year Doctoral Fellowship (4YF)</span>
+                </li>
+            </ol>
+
+            <div class="service">
+                <article class="service-block">
+                    <span class="tag">2024 -- 2025</span>
+                    <h3>CSGSA President</h3>
+                    <p>Represented graduate students across research, teaching, and community life as president of the Computer Science Graduate Student Association (CSGSA), which promotes the academic, mental, and social welfare of all MSc and PhD students, with representatives across all major department committees.</p>
+                </article>
+                <article class="service-block">
+                    <span class="tag">2023 -- 2025</span>
+                    <h3>Graduate Teaching Assistant</h3>
+                    <p>For CPSC 103 &lsquo;Introduction to Systematic Program Design&rsquo; and DSCI 320 &lsquo;Visualization for Data Science&rsquo;.</p>
+                </article>
+                <article class="service-block">
+                    <span class="tag">Since 2024</span>
+                    <h3>3MT Lead</h3>
+                    <p>Organized and led UBC Computer Science's inaugural participation in the university-wide Three-Minute Thesis (3MT) competition; current event host.</p>
+                </article>
             </div>
         </section>
 
         <section class="section section--bleed" id="illustration">
             <div class="wrap">
-                <h2>Scientific Illustration</h2>
+                <div class="section-head">
+                    <h2>Scientific Illustration</h2>
+                </div>
             </div>
             <div class="mural" id="mural" tabindex="0" role="region" aria-label="Complete mural, scrolls sideways">
                 <img src="figures/mural_full.jpeg" width="4096" height="1491" loading="lazy" draggable="false" alt="Complete mural: animals of the Paleozoic, Mesozoic and Cenozoic eras in black ink">
             </div>
             <div class="wrap">
                 <div class="mural-caption">
-                    <strong>Complete Mural</strong>
-                    <span class="hint hint--mouse">Drag to explore
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-                    <span class="hint hint--touch">Swipe to explore
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+                    <span class="hint">
+                        <span class="hint--mouse">Drag to explore</span><span class="hint--touch">Swipe to explore</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+                    <button class="pill more" type="button" aria-expanded="false" aria-controls="more-illustration" data-open-label="Hide"><span class="more-label">Show more</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></button>
                 </div>
 
-                <p class="label">Mural Plan</p>
-                <div class="plans">
-                    <a class="zoom" href="figures/mural_plan0.jpeg"><img src="figures/mural_plan0.jpeg" width="1280" height="960" loading="lazy" alt="Mural plan, first sketch"></a>
-                    <a class="zoom" href="figures/mural_plan1.jpeg"><img src="figures/mural_plan1.jpeg" width="1280" height="853" loading="lazy" alt="Mural plan, second sketch"></a>
-                    <a class="zoom" href="figures/mural_plan2.jpeg"><img src="figures/mural_plan2.jpeg" width="1280" height="853" loading="lazy" alt="Mural plan, third sketch"></a>
-                    <a class="zoom" href="figures/mural_plan.jpeg"><img src="figures/mural_plan.jpeg" width="1280" height="720" loading="lazy" alt="Mural plan"></a>
-                    <a class="zoom" href="figures/mural_1.jpeg"><img src="figures/mural_1.jpeg" width="1280" height="1023" loading="lazy" alt="Mural section 1"></a>
-                </div>
+                <div class="expand" id="more-illustration">
+                    <div class="expand-inner">
+                        <div class="gallery">
+                            <a class="zoom" href="figures/skull.jpg"><img src="figures/skull.jpg" width="1600" height="1600" loading="lazy" alt="Skull illustration"></a>
+                            <a class="zoom" href="figures/flytrap.jpeg"><img src="figures/flytrap.jpeg" width="1280" height="1024" loading="lazy" alt="Venus flytrap illustration"></a>
+                            <a class="zoom" href="figures/chem.jpeg"><img src="figures/chem.jpeg" width="1280" height="1023" loading="lazy" alt="Chemistry illustration"></a>
+                            <a class="zoom" href="figures/cat_arm.jpg"><img src="figures/cat_arm.jpg" width="1600" height="1600" loading="lazy" alt="Cat arm anatomy"></a>
+                            <a class="zoom" href="figures/meiosis_1.jpg"><img src="figures/meiosis_1.jpg" width="1600" height="1600" loading="lazy" alt="Meiosis process 1"></a>
+                            <a class="zoom" href="figures/sundew.jpeg"><img src="figures/sundew.jpeg" width="1280" height="1024" loading="lazy" alt="Sundew plant illustration"></a>
+                            <a class="zoom" href="figures/tubule.jpeg"><img src="figures/tubule.jpeg" width="1280" height="1024" loading="lazy" alt="Tubule structure"></a>
+                            <a class="zoom" href="figures/meiosis_2.jpeg"><img src="figures/meiosis_2.jpeg" width="1280" height="1023" loading="lazy" alt="Meiosis process 2"></a>
+                            <a class="zoom" href="figures/fig.jpeg"><img src="figures/fig.jpeg" width="1280" height="1024" loading="lazy" alt="Fig illustration"></a>
+                        </div>
 
-                <div class="gallery">
-                    <a class="zoom" href="figures/troodon.jpg"><img src="figures/troodon.jpg" width="1600" height="883" loading="lazy" alt="Troodon dinosaur"></a>
-                    <a class="zoom" href="figures/skull.jpg"><img src="figures/skull.jpg" width="1600" height="1600" loading="lazy" alt="Skull illustration"></a>
-                    <a class="zoom" href="figures/flytrap.jpeg"><img src="figures/flytrap.jpeg" width="1280" height="1024" loading="lazy" alt="Venus flytrap illustration"></a>
-                    <a class="zoom" href="figures/chem.jpeg"><img src="figures/chem.jpeg" width="1280" height="1023" loading="lazy" alt="Chemistry illustration"></a>
-                    <a class="zoom" href="figures/cat_arm.jpg"><img src="figures/cat_arm.jpg" width="1600" height="1600" loading="lazy" alt="Cat arm anatomy"></a>
-                    <a class="zoom" href="figures/meiosis_1.jpg"><img src="figures/meiosis_1.jpg" width="1600" height="1600" loading="lazy" alt="Meiosis process 1"></a>
-                    <a class="zoom" href="figures/sundew.jpeg"><img src="figures/sundew.jpeg" width="1280" height="1024" loading="lazy" alt="Sundew plant illustration"></a>
-                    <a class="zoom" href="figures/tubule.jpeg"><img src="figures/tubule.jpeg" width="1280" height="1024" loading="lazy" alt="Tubule structure"></a>
-                    <a class="zoom" href="figures/meiosis_2.jpeg"><img src="figures/meiosis_2.jpeg" width="1280" height="1023" loading="lazy" alt="Meiosis process 2"></a>
-                    <a class="zoom" href="figures/fig.jpeg"><img src="figures/fig.jpeg" width="1280" height="1024" loading="lazy" alt="Fig illustration"></a>
+                        <p class="label">Mural Plan</p>
+                        <div class="plans">
+                            <a class="zoom" href="figures/mural_plan0.jpeg"><img src="figures/mural_plan0.jpeg" width="1280" height="960" loading="lazy" alt="Mural plan, first sketch"></a>
+                            <a class="zoom" href="figures/mural_plan1.jpeg"><img src="figures/mural_plan1.jpeg" width="1280" height="853" loading="lazy" alt="Mural plan, second sketch"></a>
+                            <a class="zoom" href="figures/mural_plan2.jpeg"><img src="figures/mural_plan2.jpeg" width="1280" height="853" loading="lazy" alt="Mural plan, third sketch"></a>
+                            <a class="zoom" href="figures/mural_plan.jpeg"><img src="figures/mural_plan.jpeg" width="1280" height="720" loading="lazy" alt="Mural plan"></a>
+                            <a class="zoom" href="figures/mural_1.jpeg"><img src="figures/mural_1.jpeg" width="1280" height="1023" loading="lazy" alt="Mural section 1"></a>
+                            <a class="zoom" href="figures/troodon.jpg"><img src="figures/troodon.jpg" width="1600" height="883" loading="lazy" alt="Troodon dinosaur"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section--last" id="contact">
-            <h2>Contact</h2>
+        <section class="section" id="contact">
+            <div class="section-head">
+                <h2>Contact</h2>
+            </div>
             <ul class="contact-links">
                 <li><a href="mailto:bofarull@cs.ubc.ca">Email</a></li>
                 <li><a href="https://github.com/dirediredock" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                 <li><a href="https://linkedin.com/in/matt-oddo" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
             <p class="funfact">
-                Fun fact about me: I love walking. I do not own a car or bike; walking is my primary method of transportation. Walking affords deep thinking time, cardio, and locomotion -- win win win!
+                Fun fact: Walking is my primary method of transportation. Walking affords deep thinking time, cardio, and locomotion -- win win win!
             </p>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Matt Oddo</p>
+        <div class="footer-inner">
+            <span>&copy; 2026 Matt Oddo</span>
+            <a href="#top">Back to top ↑</a>
+        </div>
     </footer>
 
     <dialog class="lightbox" id="lightbox" aria-label="Enlarged illustration">
