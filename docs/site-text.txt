@@ -1,0 +1,73 @@
+HERO
+
+Eyebrow: PhD Candidate -- UBC Computer Science -- InfoVis Group
+Name: Matt Oddo
+Tagline: I build visual instruments to see inside networks and models.
+Bio: I'm a PhD Candidate at UBC building interactive visualization tools that make network and ML model structure interpretable, with Tamara Munzner, Stephen Kobourov, and team peers at the InfoVis Group. I'm looking for interpretability research roles starting in 2027.
+
+Full name: Matías Ignacio Bofarull Oddó
+From: Chile, Canada
+Base: Vancouver, BC
+
+
+TOOLS
+
+Selectoscope (2026)
+Subtitle: An instrument to visually explore network structure through linked interpretable views of labeled and unlabeled networks. Select a visual pattern in one pane to examine the same selection in every other pane.
+Details: Selectoscope is a visual tool that lets you explore network structure through linked interpretable views: select nodes and/or edges from the visual pattern in one pane to examine the same selection set in the other panes. Each pane draws the same network in its own way: a familiar NODELINK pane; a MATRIX pane with edge points ordered by spectral harmonics or PCA; the SHELLS pane that shows density variability from dense core to the sparse periphery; and the HOPS pane, which shows how eccentricity, or placement within network structure in terms of hops, varies from central to peripheral nodes. An AUTO SWEEP toggle can scan the visual patterns in a pane through a selection band. Users can load their own network datasets, with all processing happening in the browser at runtime, never leaving the user's machine.
+
+E3 -- Earth Embeddings Explainer (2026)
+Subtitle: An interactive visualization tool for probing the embedding space of Geospatial Foundation Models (GFMs). Five linked panes run from familiar satellite imagery to abstract principal components.
+Details: E3 comes from a summer 2026 software engineering internship at EarthDaily Analytics in Vancouver. E3 explores earth embeddings, which are high-dimensional "fingerprints" of Geospatial Foundation Models that compute and compress rich information about natural and human-driven phenomena for discrete points on Earth's surface. Five linked panes run from familiar to abstract: the SCENE pane that shows the area of interest with satellite imagery; the SIMILARITY pane that shows a cosine-similarity heatmap; the SIFT pane with a histogram filter for similar and dissimilar patches; the PCA pane, with a 3D point cloud that places geometrically proximal embeddings while keeping their cosine similarity heatmap coloring, and the RANKING pane, which ranks the principal components by how well they separate a manual selection. E3 ships with AlphaEarth and OlmoEarth (Nano and Tiny) embeddings for 20 curated scenes of about 115,000 patches each.
+
+Riskomon (2024)
+Subtitle: A card deck explorer for a FasterRisk Rashomon set. Drag features to re-sort many equally good risk-score models and pick the one that fits what you know.
+Details: Instead of a single black-box model, a Rashomon set holds many equally good risk-score models, all interpretable from the outset, so domain experts can pick the one that fits what they know. Riskomon shows each FasterRisk model as a column of feature bubbles, and selected models appear as cards at the bottom, like cards drawn from a deck. Dragging a feature up or down promotes or demotes it, and the model columns re-sort so the models matching those preferences move to the front. Designed and implemented by Matt Oddo with Jiachang Liu and Cynthia Rudin's Interpretable ML Lab at Duke, and Tamara Munzner, Margo Seltzer, and Francis Nguyen at UBC.
+
+
+PAPERS
+
+Visualization Tasks for Unlabeled Graphs (2026)
+Authors: Matt I. B. Oddo, Ryan Smith, Stephen Kobourov, Tamara Munzner
+Abstract: We investigate tasks that can be accomplished with unlabeled graphs, which are graphs with nodes that do not have persistent or semantically meaningful labels attached. New visualization techniques to represent unlabeled graphs have been proposed, but more understanding of unlabeled graph tasks is required before these techniques can be adequately evaluated. Some network visualization tasks apply to both labeled and unlabeled graphs, but many do not translate between these contexts. We propose a data abstraction model that distinguishes the Unlabeled context from the increasingly semantically rich Labeled, Attributed, and Augmented contexts. We filter tasks collected and gleaned from the literature according to our data abstraction and analyze the surfaced tasks, leading to a taxonomy of abstract tasks for unlabeled graphs. Our task taxonomy is organized according to the Target data under consideration, the Action intended by the user, and the Scope of the data at play. We show the descriptive power of this task abstraction by connecting to concrete examples from previous frameworks, and connecting these abstractions to real-world problems. To showcase the evaluative power of the taxonomy, we perform a preliminary assessment across 6 different network visualization idioms for each task. For each combination of task and visual encoding, we consider the effort required from viewers, the likelihood of task success, and how both factors vary between small-scale and large-scale graphs.
+
+A Design Space for Multiscale Visualization (2025)
+Authors: Mara Solen, Matt I. B. Oddo, Tamara Munzner
+Abstract: Designing multiscale visualizations, particularly when the ratio between the largest scale and the smallest item is large, can be challenging, and designers have developed many approaches to overcome this challenge. We present a design space for visualization with multiple scales. The design space includes three dimensions, with eight total subdimensions. We demonstrate its descriptive power by using it to code approaches from a corpus we compiled of 52 examples, created by a mix of academics and practitioners. We demonstrate descriptive power by analyzing and partitioning these examples into four high-level strategies for designing multiscale visualizations, which are shared approaches with respect to design space dimension choices. We demonstrate generative power by analyzing missed opportunities within the corpus of examples, identified through analysis of the design space, where we note how certain examples could have benefited from different choices. We discuss patterns in the use of different dimension and strategy choices in the different visualization contexts of analysis and presentation.
+
+The Census-Stub Graph Invariant Descriptor (2025)
+Authors: Matt I. B. Oddo, Stephen Kobourov, Tamara Munzner
+Abstract: An 'invariant descriptor' captures meaningful structural features of networks, useful where traditional visualizations, like node-link views, face challenges like the 'hairball phenomenon' (inscrutable overlap of points and lines). Designing invariant descriptors involves balancing abstraction and information retention, as richer data summaries demand more storage and computational resources. Building on prior work, chiefly the BMatrix—a matrix descriptor visualized as the invariant 'network portrait' heatmap—we introduce BFS-Census, a new algorithm computing our Census data structures: Census-Node, Census-Edge, and Census-Stub. Our experiments show Census-Stub, which focuses on 'stubs' (half-edges), has orders of magnitude greater discerning power (ability to tell non-isomorphic graphs apart) than any other descriptor in this study, without a difficult trade-off: the substantial increase in resolution doesn't come at a commensurate cost in storage space or computation power. We also present new visualizations—our Hop-Census polylines and Census-Census trajectories—and evaluate them using real-world graphs, including a sensitivity analysis that shows graph topology change maps to visual Census change.
+
+
+PATH & SERVICE
+
+BSc Biology (2016)
+The University of British Columbia, Irving K. Barber Faculty of Science
+International Major Entrance Scholarship (IMES)
+
+MSc Earth Science (2019)
+The University of British Columbia, Faculty of Science, Department of Earth, Ocean and Atmospheric Sciences
+
+PhD Computer Science (2027)
+The University of British Columbia, Faculty of Science, Department of Computer Science
+Four Year Doctoral Fellowship (4YF)
+
+CSGSA President (2024 -- 2025)
+Represented graduate students across research, teaching, and community life as president of the Computer Science Graduate Student Association (CSGSA), which promotes the academic, mental, and social welfare of all MSc and PhD students, with representatives across all major department committees.
+
+Graduate Teaching Assistant (2023 -- 2025)
+For CPSC 103 'Introduction to Systematic Program Design' and DSCI 320 'Visualization for Data Science'.
+
+3MT Lead (Since 2024)
+Organized and led UBC Computer Science's inaugural participation in the university-wide Three-Minute Thesis (3MT) competition; current event host.
+
+
+SCIENTIFIC ILLUSTRATION
+
+(no text yet)
+
+
+CONTACT
+
+Fun fact: Walking is my primary method of transportation. Walking affords deep thinking time, cardio, and locomotion -- win win win!
